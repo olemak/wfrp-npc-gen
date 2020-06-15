@@ -5,9 +5,7 @@ import { RaceSelector } from "./components/RaceSelector";
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-                <RaceSelector />
-            </header>
+            <RaceSelector />
         </div>
     );
 }
