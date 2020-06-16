@@ -1,7 +1,14 @@
 import * as React from "react";
+import Select from "react-select";
 
-interface IRaceSelectorProps {}
+interface IRaceSelectorOption {
+    value: string;
+    label: string;
+}
+interface IRaceSelectorProps {
+    options: IRaceSelectorOption[];
+}
 
-export const RaceSelector = (props: IRaceSelectorProps) => {
-    return <div>Race Selector</div>;
+export const RaceSelector = ({ options }: IRaceSelectorProps) => {
+    return <Select options={options} />;
 };

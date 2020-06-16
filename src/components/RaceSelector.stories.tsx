@@ -6,4 +6,12 @@ export default {
     component: RaceSelector,
 };
 
-export const Default = () => <RaceSelector />;
+const mockRaces = [
+    { value: "human", label: "Human" },
+    { value: "dwarf", label: "Dwarf" },
+    { value: "halfling", label: "Halfling" },
+    { value: "high-elf", label: "High Elf" },
+    { value: "wood-elf", label: "Wood Elf" },
+];
+
+export const Default = () => <RaceSelector options={mockRaces} />;
