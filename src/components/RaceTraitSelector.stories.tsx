@@ -11,7 +11,7 @@ const mockHumanRacialTraits = [
     { value: "handweapon", label: "Hand Weapon", isFixed: true },
     { value: "disease", label: "Disease" },
     { value: "ranged", label: "Ranged Attack" },
-    { value: "spellcaseter", label: "Spellcaster" },
+    { value: "spellcaster", label: "Spellcaster" },
 ];
 
 export const Default = () => (

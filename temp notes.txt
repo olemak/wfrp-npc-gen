@@ -1,0 +1,72 @@
+NPC creation steps:
+
+LOAD CHARACTER
+SAVE CHARACTER
+
+0. CHARACTER NAME
+    A generic name ("New Character" is pre-filled)
+        Options:    GENERATE | ENTER/CHANGE MANUAL
+    DESCRIPTION may be filled in (FLUFF)
+    PORTRAIT may be added too - local image reference
+
+1. Select race
+1b.     (AUTO) Fixed Racial Traits are added
+2b.     (Optional)  Randomize base stats - "RANDOMIZE" | "RESET"
+
+2. Select optional racal traits
+2b.     Set size (IF APPLICABLE). Radio Buttons with options
+
+3. Select generic traits 
+
+4. Add Career
+4b.     Select max tier (1 is default, 4 is max. Radio Buttons)
+4c      (AUTO) Adds stats, talents and skill advances 
+4c.     Add another Career.
+
+
+CHARACTER INTERFACE
+
+{
+    name: string;
+    description: string;
+    portrait: IImageReference (?);
+    race: string;
+    traits: string[];
+    stats: {
+        base: IStatBlock,
+    },
+    careers: ICareer[]
+}
+
+ICareer {
+    careerName
+    tierId
+    tierName
+    statAdvances: IStatBlock
+    talents
+    skillImprovements: ISkillImprovement[]
+}
+
+ISkill {
+    id: string
+    name: string
+}
+
+ISkillImprovement {
+    skillId: string,
+    advances: number
+}
+
+example:
+    {
+        name: "Melee (Basic)",
+        id: "melee-basic",
+        advances: 8
+    }
+
+
+Contexts
+    staticTextContext
+    creatureDataContext
+    currentCharacterContext
+    apiLogicContext

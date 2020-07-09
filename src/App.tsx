@@ -1,12 +1,19 @@
 import React from "react";
 import "./App.css";
 import { RaceSelector } from "./components/RaceSelector";
+import { staticText } from "./data/staticText/en";
+
+import { raceManifest } from "./data/race/manifest";
+
+export const Text = React.createContext(staticText);
 
 function App() {
     return (
-        <div className="App">
-            <RaceSelector />
-        </div>
+        <Text.Provider value={staticText}>
+            <main>
+                <RaceSelector options={raceManifest} />
+            </main>
+        </Text.Provider>
     );
 }
 
