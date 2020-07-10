@@ -1,12 +1,12 @@
 import * as React from "react";
-import { RaceSelector } from "./RaceSelector";
+import { SpeciesSelector } from "./SpeciesSelector";
 
 export default {
-    title: "Race Selector",
-    component: RaceSelector,
+    title: "Species Selector",
+    component: SpeciesSelector,
 };
 
-const mockRaces = [
+const mockSpecies = [
     { value: "human", label: "Human" },
     { value: "dwarf", label: "Dwarf" },
     { value: "halfling", label: "Halfling" },
@@ -14,4 +14,4 @@ const mockRaces = [
     { value: "wood-elf", label: "Wood Elf" },
 ];
 
-export const Default = () => <RaceSelector options={mockRaces} />;
+export const Default = () => <SpeciesSelector options={mockSpecies} />;

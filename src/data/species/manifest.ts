@@ -1,4 +1,4 @@
-export const raceManifest = [
+export const species = [
     { value: "human", label: "Human" },
     { value: "dwarf", label: "Dwarf" },
     { value: "halfling", label: "Halfling" },

@@ -1,15 +1,15 @@
 import React from "react";
 import "./App.css";
-import { RaceSelector } from "./components/RaceSelector";
+import { SpeciesSelector } from "./components/SpeciesSelector";
 import { Text, text } from "./context";
 
-import { raceManifest } from "./data/race/manifest";
+import { species } from "./data/species/manifest";
 
 function App() {
     return (
         <Text.Provider value={text}>
             <main>
-                <RaceSelector options={raceManifest} />
+                <SpeciesSelector options={species} />
             </main>
         </Text.Provider>
     );

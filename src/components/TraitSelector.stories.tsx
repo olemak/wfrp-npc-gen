@@ -1,9 +1,9 @@
 import * as React from "react";
-import { RaceTraitSelector } from "./RaceTraitSelector";
+import { SpeciesSelector } from "./SpeciesSelector";
 
 export default {
-    title: "Racial Trait Selector",
-    component: RaceTraitSelector,
+    title: "Trait Selector",
+    component: SpeciesSelector,
 };
 
 const mockHumanRacialTraits = [
@@ -15,5 +15,5 @@ const mockHumanRacialTraits = [
 ];
 
 export const Default = () => (
-    <RaceTraitSelector options={mockHumanRacialTraits} />
+    <SpeciesSelector options={mockHumanRacialTraits} />
 );

@@ -9,7 +9,7 @@ SAVE CHARACTER
     DESCRIPTION may be filled in (FLUFF)
     PORTRAIT may be added too - local image reference
 
-1. Select race
+1. Select species
 1b.     (AUTO) Fixed Racial Traits are added
 2b.     (Optional)  Randomize base stats - "RANDOMIZE" | "RESET"
 
@@ -30,7 +30,7 @@ CHARACTER INTERFACE
     name: string;
     description: string;
     portrait: IImageReference (?);
-    race: string;
+    species: string;
     traits: string[];
     stats: {
         base: IStatBlock,

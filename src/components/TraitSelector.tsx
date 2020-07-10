@@ -1,16 +1,16 @@
 import * as React from "react";
 import Select from "react-select";
 
-interface IRaceTraitSelectorOption {
+interface ISelectorOption {
     value: string;
     label: string;
     isFixed?: boolean;
 }
-interface IRaceTraitSelectorProps {
-    options: IRaceTraitSelectorOption[];
+interface ISelectorProps {
+    options: ISelectorOption[];
 }
 
-export const RaceTraitSelector = ({ options }: IRaceTraitSelectorProps) => {
+export const Selector = ({ options }: ISelectorProps) => {
     return (
         <>
             <div>
