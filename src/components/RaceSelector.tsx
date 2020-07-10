@@ -1,6 +1,6 @@
 import * as React from "react";
 import Select from "react-select";
-import { Text } from "../App";
+import { Text } from "../context";
 
 interface IRaceSelectorOption {
     value: string;
@@ -15,7 +15,7 @@ export const RaceSelector = ({ options }: IRaceSelectorProps) => {
     const text = React.useContext(Text);
     return (
         <section className="race-selection">
-            <h3>{text.npc.selectRace}</h3>
+            <h3>{text.npc.selectSpecies}</h3>
             <Select options={options} />
         </section>
     );

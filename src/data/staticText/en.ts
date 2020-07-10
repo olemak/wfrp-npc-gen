@@ -14,7 +14,7 @@ export const staticText = {
         name: "Name",
         namePlaceholder: "Character Name",
         size: "Size",
-        race: "Race",
-        selectRace: "Select race",
+        species: "Species",
+        selectSpecies: "Select species",
     },
 };
