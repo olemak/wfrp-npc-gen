@@ -14,4 +14,10 @@ const mockSpecies = [
     { value: "wood-elf", label: "Wood Elf" },
 ];
 
-export const Default = () => <SpeciesSelector options={mockSpecies} />;
+const mockSetSpecies = (e: any) => {
+    console.log(e);
+};
+
+export const Default = () => (
+    <SpeciesSelector options={mockSpecies} handleChange={mockSetSpecies} />
+);
