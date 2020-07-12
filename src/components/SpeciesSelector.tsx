@@ -1,6 +1,7 @@
 import * as React from "react";
 import Select from "react-select";
 import { Text } from "../context";
+import { species as options } from "../data/species/manifest";
 
 export interface ISpeciesSelectorOption {
     value: string;
@@ -8,18 +9,13 @@ export interface ISpeciesSelectorOption {
 }
 
 interface ISpeciesSelectorProps {
-    options: ISpeciesSelectorOption[];
     handleChange: (species: ISpeciesSelectorOption, action: any) => void;
 }
 
-export const SpeciesSelector = ({
-    options,
-    handleChange,
-}: ISpeciesSelectorProps) => {
+export const SpeciesSelector = ({ handleChange }: ISpeciesSelectorProps) => {
     const text = React.useContext(Text);
 
     const setSpecies = (value: any, action: any) => {
-        // console.log(value, action);
         handleChange(value, action);
     };
 

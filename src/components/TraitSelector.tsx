@@ -1,35 +1,27 @@
 import * as React from "react";
 import Select from "react-select";
-// import { Character } from "../context";
+import { genericTraitOptions } from "./../data/traits/genericTraitOptions";
+import { prepareSpeciesTraitOptions } from "../logic/prepareSpeciesTraitOptions";
+import { speciesName } from "../data/species/index";
 
-interface ITraitSelectorOption {
+export interface ITraitSelectorOption {
     value: string;
     label: string;
     isFixed?: boolean;
 }
 interface ITraitSelectorProps {
-    options?: ITraitSelectorOption[];
     children: React.ReactNode;
+    species?: speciesName;
 }
 
-export const TraitSelector = ({ options, children }: ITraitSelectorProps) => {
-    //  const characterContext = React.useContext(Character);
-    if (options) {
-        return (
-            <section>
-                <div>
-                    {options
-                        .filter((option) => option.isFixed)
-                        .map((fixedOption) => (
-                            <span>{fixedOption.label}</span>
-                        ))}
-                </div>
-                <Select
-                    options={options.filter((option) => !option.isFixed)}
-                    isMulti
-                />
-            </section>
-        );
-    }
-    return <h3>{children}</h3>;
+export const TraitSelector = ({ children, species }: ITraitSelectorProps) => {
+    const options = species
+        ? prepareSpeciesTraitOptions(species)
+        : genericTraitOptions;
+    return (
+        <section>
+            <h3>{children}</h3>
+            <Select options={options} isMulti />
+        </section>
+    );
 };

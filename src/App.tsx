@@ -3,42 +3,49 @@ import {
     SpeciesSelector,
     ISpeciesSelectorOption,
 } from "./components/SpeciesSelector";
-import { Text, text, Character, character } from "./context";
+import { Text, text } from "./context";
 import { species } from "./data/species/manifest";
 import { CareerSelector } from "./components/CareerSelector";
 import { TraitSelector } from "./components/TraitSelector";
+import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
 
 import "./App.css";
 
-function App() {
-    const [characterState, setCharacterState] = React.useState(character);
+class App extends React.Component<{}, Icharacter> {
+    constructor(props: Icharacter) {
+        super(props);
+        this.state = defaultCharacter;
+        this.setSpecies = this.setSpecies.bind(this);
+    }
 
-    const setSpecies = (newSpecies: ISpeciesSelectorOption, action: any) => {
-        if (newSpecies.value !== characterState.species) {
-            const newCharacterState = Object.assign(characterState, {
+    setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
+        if (newSpecies.value !== this.state.species) {
+            const newCharacterState = Object.assign(this.state, {
                 species: newSpecies.value,
             });
-            setCharacterState(newCharacterState);
+            this.setState(newCharacterState);
         }
-    };
+    }
 
-    return (
-        <Text.Provider value={text}>
-            <Character.Provider value={characterState}>
+    render() {
+        return (
+            <Text.Provider value={text}>
                 <main>
                     <SpeciesSelector
                         options={species}
-                        handleChange={setSpecies}
+                        handleChange={this.setSpecies}
                     />
                     <h4>Stat Block</h4>
                     <h4>Size selector (if applicable)</h4>
-                    <TraitSelector>Species traits</TraitSelector>
+                    <TraitSelector species={this.state.species}>
+                        Species traits
+                    </TraitSelector>
                     <TraitSelector>Optional Traits</TraitSelector>
                     <CareerSelector>Careers</CareerSelector>
                 </main>
-            </Character.Provider>
-        </Text.Provider>
-    );
+            </Text.Provider>
+        );
+    }
 }
 
 export default App;
