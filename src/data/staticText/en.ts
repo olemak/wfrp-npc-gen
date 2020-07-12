@@ -16,5 +16,7 @@ export const staticText = {
         size: "Size",
         species: "Species",
         selectSpecies: "Select species",
+        selectSpeciesTraits: "Species traits",
+        selectOptionalTraits: "Optional traits",
     },
 };

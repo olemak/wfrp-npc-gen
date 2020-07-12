@@ -1,7 +1,7 @@
 import * as React from "react";
 import Select from "react-select";
 import { Text } from "../context";
-import { species as options } from "../data/species/manifest";
+import { species } from "../data/species/manifest";
 
 export interface ISpeciesSelectorOption {
     value: string;
@@ -20,9 +20,10 @@ export const SpeciesSelector = ({ handleChange }: ISpeciesSelectorProps) => {
     };
 
     return (
-        <section className="species-selection">
-            <h3>{text.npc.selectSpecies}</h3>
-            <Select options={options} onChange={setSpecies} />
-        </section>
+        <Select
+            options={species}
+            onChange={setSpecies}
+            placeholder={text.npc.selectSpecies}
+        />
     );
 };

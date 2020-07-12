@@ -31,10 +31,7 @@ class App extends React.Component<{}, Icharacter> {
         return (
             <Text.Provider value={text}>
                 <main>
-                    <SpeciesSelector
-                        options={species}
-                        handleChange={this.setSpecies}
-                    />
+                    <SpeciesSelector handleChange={this.setSpecies} />
                     <h4>Stat Block</h4>
                     <h4>Size selector (if applicable)</h4>
                     <TraitSelector species={this.state.species}>
