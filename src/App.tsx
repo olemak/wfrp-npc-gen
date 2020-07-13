@@ -25,11 +25,8 @@ class App extends React.Component<{}, Icharacter> {
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
-        if (newSpecies.value !== this.state.species) {
-            const newCharacterState = Object.assign(this.state, {
-                species: newSpecies.value,
-            });
-            this.setState(newCharacterState);
+        if (newSpecies.value !== this.state.species.value) {
+            this.setState({ species: newSpecies });
         }
     }
 
@@ -44,7 +41,10 @@ class App extends React.Component<{}, Icharacter> {
         return (
             <Text.Provider value={text}>
                 <main>
-                    <SpeciesSelector handleChange={this.setSpecies} />
+                    <SpeciesSelector
+                        value={this.state.species}
+                        handleChange={this.setSpecies}
+                    />
                     <h4>Stat Block</h4>
                     <h4>Size selector (if applicable)</h4>
                     <TraitSelectorSpecies

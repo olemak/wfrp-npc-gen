@@ -14,5 +14,8 @@ const setTraitsSpecies = (newTraits: ITraitSelectorOption[]) => {
 };
 
 export const Default = () => (
-    <TraitSelectorSpecies species="human" handleChange={setTraitsSpecies} />
+    <TraitSelectorSpecies
+        species={{ label: "Human", value: "human" }}
+        handleChange={setTraitsSpecies}
+    />
 );

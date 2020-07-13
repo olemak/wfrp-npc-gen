@@ -1,8 +1,8 @@
 import * as React from "react";
 import Select from "react-select";
-import { speciesName } from "../data/species";
 import { text } from "../context/index";
 import { getSpeciesTraitOptions } from "../logic/getSpeciesTraitOptions";
+import { ISpeciesSelectorOption } from "./SpeciesSelector";
 
 export interface ITraitSelectorOption {
     value: string;
@@ -10,14 +10,14 @@ export interface ITraitSelectorOption {
     isFixed?: boolean;
 }
 interface ISpeciesTraitSelectorProps {
-    species: speciesName;
+    species: ISpeciesSelectorOption;
     handleChange: (newTraits: ITraitSelectorOption[]) => void;
 }
 
 export class TraitSelectorSpecies extends React.Component<
     ISpeciesTraitSelectorProps
 > {
-    options = getSpeciesTraitOptions(this.props.species);
+    options = getSpeciesTraitOptions(this.props.species.value);
 
     setTraitsSpecies = (value: any, action: any) => {
         this.props.handleChange(this.options.fixed.concat(value));
@@ -50,7 +50,7 @@ export class TraitSelectorSpecies extends React.Component<
                     options={this.options.optional}
                     placeholder={text.npc.OptionalSpeciesTraits}
                     onChange={this.setTraitsSpecies}
-                    key={this.props.species}
+                    key={this.props.species.value}
                     isMulti
                 />
                 <br />

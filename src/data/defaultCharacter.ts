@@ -1,5 +1,6 @@
 import { speciesName } from "./species";
 import { ITraitSelectorOption } from "../components/TraitSelectorSpecies";
+import { ISpeciesSelectorOption } from "../components/SpeciesSelector";
 
 interface Istats {
     M: number;
@@ -17,7 +18,7 @@ interface Istats {
 
 export interface Icharacter {
     name: string;
-    species: speciesName;
+    species: ISpeciesSelectorOption;
     size: string;
     speciesTraits: ITraitSelectorOption[];
     genericTraits: ITraitSelectorOption[];
@@ -26,7 +27,7 @@ export interface Icharacter {
 }
 export const defaultCharacter: Icharacter = {
     name: "New Character",
-    species: "human",
+    species: { label: "Human", value: "human" },
     size: "medium",
     speciesTraits: [],
     genericTraits: [],
