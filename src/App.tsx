@@ -3,9 +3,11 @@ import {
     SpeciesSelector,
     ISpeciesSelectorOption,
 } from "./components/SpeciesSelector";
-import { Text, text } from "./context";
+import { TraitSelectorSpecies } from "./components/TraitSelectorSpecies";
+import { TraitSelectorGeneric } from "./components/TraitSelectorGeneric";
 import { CareerSelector } from "./components/CareerSelector";
-import { TraitSelector } from "./components/TraitSelector";
+
+import { Text, text } from "./context";
 import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
 
 import "./App.css";
@@ -33,8 +35,8 @@ class App extends React.Component<{}, Icharacter> {
                     <SpeciesSelector handleChange={this.setSpecies} />
                     <h4>Stat Block</h4>
                     <h4>Size selector (if applicable)</h4>
-                    <TraitSelector species={this.state.species} />
-                    <TraitSelector />
+                    <TraitSelectorSpecies species={this.state.species} />
+                    <TraitSelectorGeneric />
                     <CareerSelector>Careers</CareerSelector>
                 </main>
             </Text.Provider>

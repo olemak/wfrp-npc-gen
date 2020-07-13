@@ -1,7 +1,6 @@
 import * as React from "react";
 import Select from "react-select";
 import { allSpecies, speciesName } from "../data/species";
-import { genericTraitOptions } from "../data/traits/genericTraitOptions";
 import { traitsManifest } from "../data/traits/traitsManifest";
 import { text } from "../context/index";
 
@@ -10,34 +9,26 @@ export interface ITraitSelectorOption {
     label: string;
     isFixed?: boolean;
 }
-interface ITraitSelectorProps {
-    species?: speciesName;
+interface ISpeciesTraitSelectorProps {
+    species: speciesName;
 }
 
 function getSpeciesTraitOptions(
     speciesId: speciesName
 ): { optional: ITraitSelectorOption[]; fixed: ITraitSelectorOption[] } {
     const fixed = traitsManifest.filter((trait) =>
-        allSpecies.human.fixed.some((id) => id === trait.value)
+        allSpecies[speciesId].fixed.some((id) => id === trait.value)
     );
     const optional = traitsManifest.filter((trait) =>
-        allSpecies.human.optional.some((id) => id === trait.value)
+        allSpecies[speciesId].optional.some((id) => id === trait.value)
     );
 
     return { fixed, optional };
 }
 
-export const TraitSelector = ({ species }: ITraitSelectorProps) => {
-    if (!species) {
-        return (
-            <Select
-                options={genericTraitOptions}
-                placeholder={text.npc.GenericTraits}
-                isMulti
-            />
-        );
-    }
-
+export const TraitSelectorSpecies = ({
+    species,
+}: ISpeciesTraitSelectorProps) => {
     const options: {
         optional: ITraitSelectorOption[];
         fixed: ITraitSelectorOption[];
