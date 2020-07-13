@@ -11,6 +11,7 @@ export interface ITraitSelectorOption {
 }
 interface ISpeciesTraitSelectorProps {
     species: speciesName;
+    handleChange: (newTraits: ITraitSelectorOption[]) => void;
 }
 
 function getSpeciesTraitOptions(
@@ -28,11 +29,17 @@ function getSpeciesTraitOptions(
 
 export const TraitSelectorSpecies = ({
     species,
+    handleChange,
 }: ISpeciesTraitSelectorProps) => {
     const options: {
         optional: ITraitSelectorOption[];
         fixed: ITraitSelectorOption[];
     } = getSpeciesTraitOptions(species);
+
+    const setTraitsSpecies = (value: any, action: any) => {
+        console.log(options.fixed);
+        handleChange(options.fixed.concat(value));
+    };
 
     return (
         <section>
@@ -41,12 +48,15 @@ export const TraitSelectorSpecies = ({
                     {text.npc.FixedSpeciesTraits}: &nbsp;&nbsp;&nbsp;&nbsp;
                 </strong>
                 {options.fixed.map((fixedOption) => (
-                    <span>{fixedOption.label}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span key={fixedOption.value}>
+                        {fixedOption.label}&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
                 ))}
             </div>
             <Select
                 options={options.optional}
                 placeholder={text.npc.OptionalSpeciesTraits}
+                onChange={setTraitsSpecies}
                 isMulti
             />
             <br />

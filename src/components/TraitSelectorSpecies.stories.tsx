@@ -1,9 +1,18 @@
 import * as React from "react";
-import { TraitSelectorSpecies } from "./TraitSelectorSpecies";
+import {
+    TraitSelectorSpecies,
+    ITraitSelectorOption,
+} from "./TraitSelectorSpecies";
 
 export default {
     title: "Trait Selector",
     component: TraitSelectorSpecies,
 };
 
-export const Default = () => <TraitSelectorSpecies species="human" />;
+const setTraitsSpecies = (newTraits: ITraitSelectorOption[]) => {
+    console.log(newTraits);
+};
+
+export const Default = () => (
+    <TraitSelectorSpecies species="human" handleChange={setTraitsSpecies} />
+);

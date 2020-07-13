@@ -3,7 +3,10 @@ import {
     SpeciesSelector,
     ISpeciesSelectorOption,
 } from "./components/SpeciesSelector";
-import { TraitSelectorSpecies } from "./components/TraitSelectorSpecies";
+import {
+    TraitSelectorSpecies,
+    ITraitSelectorOption,
+} from "./components/TraitSelectorSpecies";
 import { TraitSelectorGeneric } from "./components/TraitSelectorGeneric";
 import { CareerSelector } from "./components/CareerSelector";
 
@@ -17,6 +20,8 @@ class App extends React.Component<{}, Icharacter> {
         super(props);
         this.state = defaultCharacter;
         this.setSpecies = this.setSpecies.bind(this);
+        this.setTraitsSpecies = this.setTraitsSpecies.bind(this);
+        this.setTraitsGeneric = this.setTraitsGeneric.bind(this);
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
@@ -28,6 +33,13 @@ class App extends React.Component<{}, Icharacter> {
         }
     }
 
+    setTraitsSpecies(newTraits: ITraitSelectorOption[]) {
+        this.setState({ speciesTraits: newTraits });
+    }
+    setTraitsGeneric(newTraits: ITraitSelectorOption[]) {
+        this.setState({ genericTraits: newTraits });
+    }
+
     render() {
         return (
             <Text.Provider value={text}>
@@ -35,8 +47,13 @@ class App extends React.Component<{}, Icharacter> {
                     <SpeciesSelector handleChange={this.setSpecies} />
                     <h4>Stat Block</h4>
                     <h4>Size selector (if applicable)</h4>
-                    <TraitSelectorSpecies species={this.state.species} />
-                    <TraitSelectorGeneric />
+                    <TraitSelectorSpecies
+                        species={this.state.species}
+                        handleChange={this.setTraitsSpecies}
+                    />
+                    <TraitSelectorGeneric
+                        handleChange={this.setTraitsGeneric}
+                    />
                     <CareerSelector>Careers</CareerSelector>
                 </main>
             </Text.Provider>
