@@ -4,7 +4,7 @@ import { speciesName } from "../data/species/index";
 import { ITraitSelectorOption } from "../components/TraitSelector";
 
 export function prepareSpeciesTraitOptions(
-    species: speciesName
+    species: speciesName;
 ): ITraitSelectorOption[] {
     /*
     const currentSpeciesOptions = allSpecies[species];

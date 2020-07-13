@@ -6,6 +6,4 @@ export default {
     component: TraitSelector,
 };
 
-export const Default = () => (
-    <TraitSelector species="human">Species Traits</TraitSelector>
-);
+export const Default = () => <TraitSelector species="human" />;

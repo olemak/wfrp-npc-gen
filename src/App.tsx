@@ -4,7 +4,6 @@ import {
     ISpeciesSelectorOption,
 } from "./components/SpeciesSelector";
 import { Text, text } from "./context";
-import { species } from "./data/species/manifest";
 import { CareerSelector } from "./components/CareerSelector";
 import { TraitSelector } from "./components/TraitSelector";
 import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
@@ -34,10 +33,8 @@ class App extends React.Component<{}, Icharacter> {
                     <SpeciesSelector handleChange={this.setSpecies} />
                     <h4>Stat Block</h4>
                     <h4>Size selector (if applicable)</h4>
-                    <TraitSelector species={this.state.species}>
-                        Species traits
-                    </TraitSelector>
-                    <TraitSelector>Optional Traits</TraitSelector>
+                    <TraitSelector species={this.state.species} />
+                    <TraitSelector />
                     <CareerSelector>Careers</CareerSelector>
                 </main>
             </Text.Provider>
