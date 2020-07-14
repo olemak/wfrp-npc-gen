@@ -1,5 +1,9 @@
 export const genericTraitOptions = [
-    { value: "disease", label: "Disease" },
-    { value: "ranged", label: "Ranged Attack" },
-    { value: "spellcaster", label: "Spellcaster" },
+    { value: "brute", label: "Brute" },
+    { value: "champion", label: "Champion" },
+    { value: "cunning", label: "Cunning" },
+    { value: "elite", label: "Elite" },
+    { value: "fast", label: "Fast" },
+    { value: "hardy", label: "Hardy" },
+    { value: "tough", label: "Tough" },
 ];
