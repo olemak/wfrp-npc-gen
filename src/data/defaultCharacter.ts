@@ -1,4 +1,3 @@
-import { speciesName } from "./species";
 import { ITraitSelectorOption } from "../components/TraitSelectorSpecies";
 import { ISpeciesSelectorOption } from "../components/SpeciesSelector";
 
@@ -19,7 +18,7 @@ interface Istats {
 export interface Icharacter {
     name: string;
     species: ISpeciesSelectorOption;
-    size: string;
+    size?: string;
     speciesTraits: ITraitSelectorOption[];
     genericTraits: ITraitSelectorOption[];
     careers: string[];
