@@ -1,4 +1,82 @@
-export const traitsManifest = [
+export type traitName =
+    | "afraid"
+    | "amphibious"
+    | "arboreal"
+    | "animosity"
+    | "Armour"
+    | "bestial"
+    | "bite"
+    | "blessed"
+    | "bounce"
+    | "breath"
+    | "brute"
+    | "champion"
+    | "chillgrasp"
+    | "clever"
+    | "coldblooded"
+    | "constrictor"
+    | "construct"
+    | "corrosiveblood"
+    | "corruption"
+    | "cunning"
+    | "darkvision"
+    | "daemonic"
+    | "diehard"
+    | "disease"
+    | "distracting"
+    | "elite"
+    | "ethereal"
+    | "fast"
+    | "fear"
+    | "flight"
+    | "frenzy"
+    | "fury"
+    | "ghostlyhowl"
+    | "hardy"
+    | "hatred"
+    | "horns"
+    | "hungry"
+    | "immunity"
+    | "immunitypsychology"
+    | "infected"
+    | "infestation"
+    | "leader"
+    | "magical"
+    | "magicresistance"
+    | "mentalcorruption"
+    | "miracles"
+    | "mutation"
+    | "nightvision"
+    | "painless"
+    | "petrifyinggaze"
+    | "prejudice"
+    | "ranged"
+    | "rear"
+    | "skittish"
+    | "spellcaster"
+    | "stealthy"
+    | "stride"
+    | "stupid"
+    | "swarm"
+    | "tailattack"
+    | "tentacles"
+    | "territorial"
+    | "terror"
+    | "trained"
+    | "tongueattack"
+    | "tough"
+    | "tracker"
+    | "undead"
+    | "unstable"
+    | "vampiric"
+    | "venom"
+    | "vomit"
+    | "ward"
+    | "wallcrawler"
+    | "weapon"
+    | "web";
+
+export const traitsManifest: { value: traitName; label: string }[] = [
     { value: "afraid", label: "Afraid (Target)" },
     { value: "amphibious", label: "Amphibious" },
     { value: "arboreal", label: "Arboreal" },
@@ -11,17 +89,17 @@ export const traitsManifest = [
     { value: "breath", label: "Breath Rating (Type)" },
     { value: "brute", label: "Brute" },
     { value: "champion", label: "Champion" },
-    { value: "chill-grasp", label: "Chill Grasp" },
+    { value: "chillgrasp", label: "Chill Grasp" },
     { value: "clever", label: "Clever" },
-    { value: "cold-blooded", label: "Cold-blooded" },
+    { value: "coldblooded", label: "Cold-blooded" },
     { value: "constrictor", label: "Constrictor" },
     { value: "construct", label: "Construct" },
-    { value: "corrosive-blood", label: "Corrosive Blood" },
+    { value: "corrosiveblood", label: "Corrosive Blood" },
     { value: "corruption", label: "Corruption (Strength)" },
     { value: "cunning", label: "Cunning" },
-    { value: "dark-vision", label: "Dark Vision" },
+    { value: "darkvision", label: "Dark Vision" },
     { value: "daemonic", label: "Daemonic (Target)" },
-    { value: "die-hard", label: "Die Hard" },
+    { value: "diehard", label: "Die Hard" },
     { value: "disease", label: "Disease (Type)" },
     { value: "distracting", label: "Distracting" },
     { value: "elite", label: "Elite" },
@@ -31,24 +109,24 @@ export const traitsManifest = [
     { value: "flight", label: "Flight (Rating)" },
     { value: "frenzy", label: "Frenzy" },
     { value: "fury", label: "Fury" },
-    { value: "ghostly-howl", label: "Ghostly Howl" },
+    { value: "ghostlyhowl", label: "Ghostly Howl" },
     { value: "hardy", label: "Hardy" },
     { value: "hatred", label: "Hatred (Target)" },
     { value: "horns", label: "Horns Rating (Feature)" },
     { value: "hungry", label: "Hungry" },
     { value: "immunity", label: "Immunity (Type)" },
-    { value: "immunity-psychology", label: "Immunity to Psychology" },
+    { value: "immunitypsychology", label: "Immunity to Psychology" },
     { value: "infected", label: "Infected" },
     { value: "infestation", label: "Infestation" },
     { value: "leader", label: "Leader" },
     { value: "magical", label: "Magical" },
-    { value: "magic-resistance", label: "Magic Resistance (Rating)" },
-    { value: "mental-corruption", label: "Mental Corruption" },
+    { value: "magicresistance", label: "Magic Resistance (Rating)" },
+    { value: "mentalcorruption", label: "Mental Corruption" },
     { value: "miracles", label: "Miracles (various)" },
     { value: "mutation", label: "Mutation" },
-    { value: "night-vision", label: "Night Vision" },
+    { value: "nightvision", label: "Night Vision" },
     { value: "painless", label: "Painless" },
-    { value: "petrifying-gaze", label: "Petrifying Gaze" },
+    { value: "petrifyinggaze", label: "Petrifying Gaze" },
     { value: "prejudice", label: "Prejudice (Target)" },
     { value: "ranged", label: "Ranged Rating (Range)" },
     { value: "rear", label: "Rear" },
@@ -58,12 +136,12 @@ export const traitsManifest = [
     { value: "stride", label: "Stride" },
     { value: "stupid", label: "Stupid" },
     { value: "swarm", label: "Swarm" },
-    { value: "tail-attack", label: "Tail Attack (Rating)" },
+    { value: "tailattack", label: "Tail Attack (Rating)" },
     { value: "tentacles", label: "# Tentacles (Rating)" },
     { value: "territorial", label: "Territorial" },
     { value: "terror", label: "Terror (Rating)" },
     { value: "trained", label: "Trained (Trained Skills)" },
-    { value: "tongue-attack", label: "Tongue Attack Rating (Range)" },
+    { value: "tongueattack", label: "Tongue Attack Rating (Range)" },
     { value: "tough", label: "Tough" },
     { value: "tracker", label: "Tracker" },
     { value: "undead", label: "Undead" },

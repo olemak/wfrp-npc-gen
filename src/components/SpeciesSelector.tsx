@@ -2,7 +2,7 @@ import * as React from "react";
 import Select from "react-select";
 import { Text } from "../context";
 import { species } from "../data/species/manifest";
-import { speciesName } from "../data/species/index";
+import { speciesName } from "../data/species";
 
 export interface ISpeciesSelectorOption {
     value: speciesName;
@@ -20,8 +20,8 @@ export const SpeciesSelector = ({
 }: ISpeciesSelectorProps) => {
     const text = React.useContext(Text);
 
-    const setSpecies = (newValue: any, action: any) => {
-        handleChange(newValue, action);
+    const setSpecies = (value: any, action: any) => {
+        handleChange(value, action);
     };
 
     return (

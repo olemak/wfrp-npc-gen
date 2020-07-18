@@ -1,13 +1,16 @@
+import { ISpecies } from ".";
+
 // TODO: Update Dwarf with actual values
-export const dwarf = {
-    id: { label: "Dwarf", value: "dwarf" },
+export const dwarf: ISpecies = {
+    value: "dwarf",
+    label: "Dwarf",
     fixed: [
         "animosity",
         "hatred",
-        "magic-resistance",
-        "night-vision",
+        "magicresistance",
+        "nightvision",
         "prejudice",
-        "handweapon",
+        "weapon",
     ],
     optional: ["fury", "ranged"],
 };

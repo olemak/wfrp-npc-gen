@@ -14,6 +14,7 @@ import { Text, text } from "./context";
 import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
 
 import "./App.css";
+import { traitName } from "./data/traits/traitsManifest";
 
 class App extends React.Component<{}, Icharacter> {
     constructor(props: Icharacter) {
@@ -25,16 +26,25 @@ class App extends React.Component<{}, Icharacter> {
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
-        if (newSpecies.value !== this.state.species.value) {
-            this.setState({ species: newSpecies });
+        if (newSpecies.value !== this.state.value) {
+            this.setState({ ...newSpecies });
         }
     }
 
     setTraitsSpecies(newTraits: ITraitSelectorOption[]) {
-        this.setState({ speciesTraits: newTraits });
+        const newTraitNames: string[] = newTraits.map((trait) => trait.label);
+
+        if (newTraitNames.length !== this.state.traits.length) {
+            this.setState({ traits: newTraitNames });
+        }
     }
+
     setTraitsGeneric(newTraits: ITraitSelectorOption[]) {
-        this.setState({ genericTraits: newTraits });
+        const newTraitNames: string[] = newTraits.map((trait) => trait.label);
+
+        if (newTraits.length !== this.state.generic.length) {
+            this.setState({ generic: newTraitNames });
+        }
     }
 
     render() {
@@ -42,13 +52,19 @@ class App extends React.Component<{}, Icharacter> {
             <Text.Provider value={text}>
                 <main>
                     <SpeciesSelector
-                        value={this.state.species}
+                        value={{
+                            value: this.state.value,
+                            label: this.state.label,
+                        }}
                         handleChange={this.setSpecies}
                     />
                     <h4>Stat Block</h4>
                     <h4>Size selector (if applicable)</h4>
                     <TraitSelectorSpecies
-                        species={this.state.species}
+                        species={{
+                            value: this.state.value,
+                            label: this.state.label,
+                        }}
                         handleChange={this.setTraitsSpecies}
                     />
                     <TraitSelectorGeneric
