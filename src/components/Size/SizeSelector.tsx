@@ -7,46 +7,35 @@ import "./size.css";
 
 interface ISizeSelectorProps {
     speciesId: speciesName;
+    handleChange: (newSize: Size) => void;
+    sizeValue: Size;
 }
 
-interface ISizeRangeSelectorProps {
-    min?: Size;
-    max?: Size;
-}
-
-const SizeRangeSelector = ({ min, max }: ISizeRangeSelectorProps) => {
-    const RangeOptions = ({ min, max }: { min: Size; max: Size }) => {
-        const text = React.useContext(Text);
-        let options: React.ReactNode[] = [];
-        let i = min;
-        while (i++ <= max) {
-            options.push(<option value={i} label={text.npc.sizeStrings[i]} />);
-        }
-        return <datalist id="sizeoptions">{options}</datalist>;
-    };
-
-    if (min && max) {
-        return (
-            <section>
-                <RangeOptions min={min} max={max} />
-                <input type="range" list="sizeoptions" />
-            </section>
-        );
-    }
-    return null;
-};
-
-export const SizeSelector = ({ speciesId }: ISizeSelectorProps) => {
+export const SizeSelector = ({
+    speciesId,
+    handleChange,
+    sizeValue,
+}: ISizeSelectorProps) => {
     const text = React.useContext(Text);
-
     const currentSpecies: ISpecies = allSpecies[speciesId];
-    const size = currentSpecies.size ?? Size.AVERAGE;
     const { minSize, maxSize } = currentSpecies;
+
+    const handleSizeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        handleChange(event.target.valueAsNumber);
+    };
 
     return (
         <section className="size">
-            <h4>{text.npc.sizeStrings[size]}</h4>
-            <SizeRangeSelector min={minSize} max={maxSize} />
+            <strong>{`Size: ${text.npc.sizeStrings[sizeValue]} `}</strong>
+            {minSize && maxSize && (
+                <input
+                    type="range"
+                    min={minSize}
+                    max={maxSize}
+                    step={1}
+                    onChange={handleSizeChange}
+                />
+            )}
         </section>
     );
 };

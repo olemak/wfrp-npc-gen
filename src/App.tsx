@@ -15,6 +15,7 @@ import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
 
 import "./App.css";
 import { SizeSelector } from "./components/Size/SizeSelector";
+import { Size } from "./components/Size/SizeEnum";
 
 class App extends React.Component<{}, Icharacter> {
     constructor(props: Icharacter) {
@@ -23,6 +24,7 @@ class App extends React.Component<{}, Icharacter> {
         this.setSpecies = this.setSpecies.bind(this);
         this.setTraitsSpecies = this.setTraitsSpecies.bind(this);
         this.setTraitsGeneric = this.setTraitsGeneric.bind(this);
+        this.setSize = this.setSize.bind(this);
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
@@ -47,6 +49,10 @@ class App extends React.Component<{}, Icharacter> {
         }
     }
 
+    setSize(newSize: any) {
+        this.setState({ size: newSize });
+    }
+
     render() {
         return (
             <Text.Provider value={text}>
@@ -59,7 +65,11 @@ class App extends React.Component<{}, Icharacter> {
                         handleChange={this.setSpecies}
                     />
                     <h4>Stat Block</h4>
-                    <SizeSelector speciesId={this.state.value} />
+                    <SizeSelector
+                        speciesId={this.state.value}
+                        sizeValue={this.state.size}
+                        handleChange={this.setSize}
+                    />
                     <TraitSelectorSpecies
                         species={{
                             value: this.state.value,
