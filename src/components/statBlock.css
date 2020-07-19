@@ -1,0 +1,16 @@
+.stat-block {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 4px;
+}
+.stat-block__values,
+.stat-block__controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.stat-block__values.collapsed span {
+    display: none;
+}

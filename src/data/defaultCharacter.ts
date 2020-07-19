@@ -1,19 +1,5 @@
-import { speciesName } from "./species/index";
+import { speciesName, Istats } from "./species/index";
 import { Size } from "../components/Size/SizeEnum";
-
-interface Istats {
-    M: number;
-    WS: number;
-    BS: number;
-    S: number;
-    T: number;
-    I: number;
-    Ag: number;
-    Dex: number;
-    Int: number;
-    WP: number;
-    Fel: number;
-}
 
 export interface Icharacter {
     name: string;
@@ -22,9 +8,12 @@ export interface Icharacter {
     size: Size;
     sizeMin?: Size;
     sizeMax?: Size;
+    wounds?: number;
+    move?: number;
     traits: string[];
     generic: string[];
     careers: string[];
+    baseStats: Istats;
     statModifiers: Istats;
 }
 export const defaultCharacter: Icharacter = {
@@ -35,8 +24,19 @@ export const defaultCharacter: Icharacter = {
     traits: [],
     generic: [],
     careers: [],
+    baseStats: {
+        WS: 30,
+        BS: 30,
+        S: 30,
+        T: 30,
+        I: 30,
+        Ag: 30,
+        Dex: 30,
+        Int: 30,
+        WP: 30,
+        Fel: 30,
+    },
     statModifiers: {
-        M: 0,
         WS: 0,
         BS: 0,
         S: 0,

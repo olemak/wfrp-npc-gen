@@ -15,6 +15,8 @@ import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
 
 import "./App.css";
 import { SizeSelector } from "./components/Size/SizeSelector";
+import { StatBlock } from "./components/StatBlock";
+import { Istats } from "./data/species";
 
 class App extends React.Component<{}, Icharacter> {
     constructor(props: Icharacter) {
@@ -32,11 +34,11 @@ class App extends React.Component<{}, Icharacter> {
         }
     }
 
-    setTraitsSpecies(newTraits: ITraitSelectorOption[]) {
+    setTraitsSpecies(newTraits: ITraitSelectorOption[], baseStats: Istats) {
         const newTraitNames: string[] = newTraits.map((trait) => trait.label);
 
         if (newTraitNames.length !== this.state.traits.length) {
-            this.setState({ traits: newTraitNames });
+            this.setState({ traits: newTraitNames, baseStats });
         }
     }
 
@@ -63,7 +65,11 @@ class App extends React.Component<{}, Icharacter> {
                         }}
                         handleChange={this.setSpecies}
                     />
-                    <h4>Stat Block</h4>
+                    <StatBlock
+                        species={this.state.label}
+                        baseStats={this.state.baseStats}
+                        improvements={this.state.statModifiers}
+                    />
                     <SizeSelector
                         speciesId={this.state.value}
                         sizeValue={this.state.size}

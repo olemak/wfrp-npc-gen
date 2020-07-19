@@ -3,6 +3,7 @@ import Select from "react-select";
 import { text } from "../context/index";
 import { getSpeciesTraitOptions } from "../logic/getSpeciesTraitOptions";
 import { ISpeciesSelectorOption } from "./SpeciesSelector";
+import { Istats } from "../data/species";
 
 export interface ITraitSelectorOption {
     value: string;
@@ -11,7 +12,10 @@ export interface ITraitSelectorOption {
 }
 interface ISpeciesTraitSelectorProps {
     species: ISpeciesSelectorOption;
-    handleChange: (newTraits: ITraitSelectorOption[]) => void;
+    handleChange: (
+        newTraits: ITraitSelectorOption[],
+        baseStats: Istats
+    ) => void;
 }
 
 export class TraitSelectorSpecies extends React.Component<
@@ -20,16 +24,19 @@ export class TraitSelectorSpecies extends React.Component<
     state = getSpeciesTraitOptions(this.props.species.value);
 
     setTraitsSpecies = (value: any, action: any) => {
-        this.props.handleChange(this.state.fixed.concat(value));
+        this.props.handleChange(
+            this.state.fixed.concat(value),
+            this.state.baseStats
+        );
     };
 
     componentDidMount() {
-        this.props.handleChange(this.state.fixed);
+        this.props.handleChange(this.state.fixed, this.state.baseStats);
     }
 
     componentDidUpdate(prevProps: ISpeciesTraitSelectorProps) {
         if (prevProps.species !== this.props.species) {
-            this.props.handleChange(this.state.fixed);
+            this.props.handleChange(this.state.fixed, this.state.baseStats);
             this.setState(getSpeciesTraitOptions(this.props.species.value));
         }
     }
