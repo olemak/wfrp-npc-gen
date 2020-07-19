@@ -14,7 +14,7 @@ import { Text, text } from "./context";
 import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
 
 import "./App.css";
-import { traitName } from "./data/traits/traitsManifest";
+import { SizeSelector } from "./components/Size/SizeSelector";
 
 class App extends React.Component<{}, Icharacter> {
     constructor(props: Icharacter) {
@@ -59,7 +59,7 @@ class App extends React.Component<{}, Icharacter> {
                         handleChange={this.setSpecies}
                     />
                     <h4>Stat Block</h4>
-                    <h4>Size selector (if applicable)</h4>
+                    <SizeSelector speciesId={this.state.value} />
                     <TraitSelectorSpecies
                         species={{
                             value: this.state.value,

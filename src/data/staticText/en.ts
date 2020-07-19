@@ -13,11 +13,21 @@ export const staticText = {
     npc: {
         name: "Name",
         namePlaceholder: "Character Name",
-        size: "Size",
         species: "Species",
         selectSpecies: "Select species",
         FixedSpeciesTraits: "Fixed traits",
         OptionalSpeciesTraits: "Optional traits",
         GenericTraits: "Generic traits",
+        size: "Size",
+
+        sizeStrings: {
+            0: "Tiny",
+            1: "Little",
+            2: "Small",
+            3: "Average",
+            4: "Large",
+            5: "Enormous",
+            6: "Monstrous",
+        },
     },
 };

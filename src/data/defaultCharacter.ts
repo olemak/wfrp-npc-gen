@@ -1,5 +1,5 @@
 import { speciesName } from "./species/index";
-import { traitName } from "./traits/traitsManifest";
+import { Size } from "../components/Size/SizeEnum";
 
 interface Istats {
     M: number;
@@ -19,6 +19,9 @@ export interface Icharacter {
     name: string;
     label: string;
     value: speciesName;
+    size: Size;
+    sizeMin?: Size;
+    sizeMax?: Size;
     traits: string[];
     generic: string[];
     careers: string[];
@@ -28,6 +31,7 @@ export const defaultCharacter: Icharacter = {
     name: "New Character",
     value: "human",
     label: "Human",
+    size: Size.AVERAGE,
     traits: [],
     generic: [],
     careers: [],
