@@ -14,28 +14,41 @@ interface ISizeSelectorProps {
 export const SizeSelector = ({
     speciesId,
     handleChange,
-    sizeValue,
 }: ISizeSelectorProps) => {
     const text = React.useContext(Text);
+
     const currentSpecies: ISpecies = allSpecies[speciesId];
-    const { minSize, maxSize } = currentSpecies;
+    const { size, minSize, maxSize } = currentSpecies;
+    const speciesSize = size ?? Size.AVERAGE;
+    const [sizeState, setSizeState] = React.useState(speciesSize);
 
     const handleSizeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        handleChange(event.target.valueAsNumber);
+        const newSize = event.target.valueAsNumber;
+        setSizeState(newSize);
+        handleChange(newSize);
     };
+
+    React.useEffect(() => {
+        handleChange(speciesSize);
+    }, [handleChange, speciesSize]);
 
     return (
         <section className="size">
-            <strong>{`Size: ${text.npc.sizeStrings[sizeValue]} `}</strong>
+            <strong
+                style={{ display: "inline-block", minWidth: "136px" }}
+            >{`Size: ${text.npc.sizeStrings[sizeState]} `}</strong>
             {minSize && maxSize && (
                 <input
                     type="range"
                     min={minSize}
                     max={maxSize}
                     step={1}
+                    value={sizeState}
                     onChange={handleSizeChange}
                 />
             )}
+            <br />
+            <br />
         </section>
     );
 };
