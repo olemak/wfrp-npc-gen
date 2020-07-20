@@ -10,7 +10,7 @@ type statName =
     | "WP"
     | "Fel";
 
-type skillName =
+export type skillName =
     | "animalcare"
     | "animaltraining"
     | "art"
@@ -56,14 +56,14 @@ type skillName =
     | "track"
     | "trade";
 
-interface skill {
+interface Iskill {
     value: skillName;
     label: string;
     stat: statName;
     specializations?: string[];
 }
 
-export const skillList: skill[] = [
+export const skillList: Iskill[] = [
     { value: "animalcare", label: "Animal Care", stat: "Int" },
     {
         value: "animaltraining",
