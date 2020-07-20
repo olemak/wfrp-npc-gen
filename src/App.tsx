@@ -26,12 +26,17 @@ class App extends React.Component<{}, Icharacter> {
         this.setTraitsSpecies = this.setTraitsSpecies.bind(this);
         this.setTraitsGeneric = this.setTraitsGeneric.bind(this);
         this.setSize = this.setSize.bind(this);
+        this.setStatModifiers = this.setStatModifiers.bind(this);
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
         if (newSpecies.value !== this.state.value) {
             this.setState({ ...newSpecies });
         }
+    }
+
+    setStatModifiers(statModifiers: Istats) {
+        this.setState({ statModifiers });
     }
 
     setTraitsSpecies(newTraits: ITraitSelectorOption[], baseStats: Istats) {
@@ -68,7 +73,9 @@ class App extends React.Component<{}, Icharacter> {
                     <StatBlock
                         species={this.state.label}
                         baseStats={this.state.baseStats}
+                        statModifiers={this.state.statModifiers}
                         improvements={this.state.statModifiers}
+                        handleChange={this.setStatModifiers}
                     />
                     <SizeSelector
                         speciesId={this.state.value}

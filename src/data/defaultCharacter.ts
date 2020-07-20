@@ -15,6 +15,7 @@ export interface Icharacter {
     careers: string[];
     baseStats: Istats;
     statModifiers: Istats;
+    statImprovements: Istats[];
 }
 export const defaultCharacter: Icharacter = {
     name: "New Character",
@@ -48,4 +49,5 @@ export const defaultCharacter: Icharacter = {
         WP: 0,
         Fel: 0,
     },
+    statImprovements: [],
 };

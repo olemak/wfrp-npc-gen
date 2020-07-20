@@ -1,18 +1,42 @@
 import * as React from "react";
 import "./statBlock.css";
+import { Istats } from "../data/species/index";
 
 interface IStatBlock {
     species: string;
     improvements: any;
     baseStats: any;
+    statModifiers: any;
+    handleChange: (statModifiers: Istats) => void;
 }
 
-export const StatBlock = ({ species, improvements, baseStats }: IStatBlock) => {
+export const StatBlock = ({
+    species,
+    improvements,
+    baseStats,
+    statModifiers,
+    handleChange,
+}: IStatBlock) => {
     const [showRows, setShowRows] = React.useState(true);
     const keys: string[] = Object.keys(improvements);
 
     const toggle = () => {
         setShowRows(!showRows);
+    };
+
+    const calculateStats = (key: string): React.ReactNode => {
+        return baseStats[key] + improvements[key];
+    };
+
+    const randomizeStatModifiers = () => {
+        const newStatMods = Object.assign({}, statModifiers);
+
+        const x = () =>
+            Math.floor(Math.random() * 11) - Math.floor(Math.random() * 9);
+
+        keys.map((key) => (newStatMods[key] = x()));
+
+        handleChange(newStatMods);
     };
 
     return (
@@ -30,9 +54,7 @@ export const StatBlock = ({ species, improvements, baseStats }: IStatBlock) => {
                     <strong>{key}</strong>
                     <span>{baseStats[key]}</span>
                     <span>{improvements[key]}</span>
-                    <strong>
-                        {calculateStats(baseStats, improvements, key)}
-                    </strong>
+                    <strong>{calculateStats(key)}</strong>
                 </div>
             ))}
 
@@ -43,16 +65,13 @@ export const StatBlock = ({ species, improvements, baseStats }: IStatBlock) => {
                 >
                     {showRows ? "Collapse" : "Expand"}
                 </strong>
-
-                <strong>Randomize</strong>
+                <span>&#8678; Base Stats</span>
+                <span>
+                    &#8678;{" "}
+                    <strong onClick={randomizeStatModifiers}>Random</strong>
+                </span>
+                <span>&#8678; Sum</span>
             </div>
         </section>
     );
 };
-function calculateStats(
-    baseStats: any,
-    improvements: any,
-    key: string
-): React.ReactNode {
-    return baseStats[key] + improvements[key];
-}
