@@ -18,7 +18,7 @@ export type skillName =
     | "bribery"
     | "channelling"
     | "charm"
-    | "charm"
+    | "charmanimal"
     | "climb"
     | "consumealcohol"
     | "cool"
@@ -51,6 +51,7 @@ export type skillName =
     | "sail"
     | "secretsigns"
     | "settrap"
+    | "sleightofhand"
     | "stealth"
     | "swim"
     | "track"
@@ -104,7 +105,7 @@ export const skillList: Iskill[] = [
         ],
     },
     { value: "charm", label: "Charm", stat: "Fel" },
-    { value: "charm", label: "Charm Animal", stat: "WP" },
+    { value: "charmanimal", label: "Charm Animal", stat: "WP" },
     { value: "climb", label: "Climb", stat: "S" },
     { value: "consumealcohol", label: "Consume Alcohol", stat: "T" },
     { value: "cool", label: "Cool", stat: "WP" },
@@ -231,6 +232,7 @@ export const skillList: Iskill[] = [
     },
     { value: "secretsigns", label: "Secret Signs", stat: "Int" },
     { value: "settrap", label: "Set Trap", stat: "Dex" },
+    { value: "sleightofhand", label: "Sleight of Hand", stat: "Dex" },
     { value: "stealth", label: "Stealth", stat: "Ag" },
     { value: "swim", label: "Swim", stat: "S" },
     { value: "track", label: "Track", stat: "I" },
