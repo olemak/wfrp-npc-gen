@@ -5,6 +5,7 @@ export const halfling: ISpecies = {
     label: "Halfling",
     value: "halfling",
     baseStats: {
+        M: 3,
         WS: 20,
         BS: 40,
         S: 20,

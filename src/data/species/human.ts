@@ -1,12 +1,13 @@
 import { ISpecies } from ".";
 import { Size } from "../../components/Size/SizeEnum";
 
-// TODO: (Human) remove debug size values
+// TODO: (Human) remove debug size values and bodus traits (Brute, Champion)
 
 export const human: ISpecies = {
     label: "Human",
     value: "human",
     baseStats: {
+        M: 4,
         WS: 30,
         BS: 30,
         S: 30,
@@ -21,6 +22,6 @@ export const human: ISpecies = {
     size: Size.AVERAGE,
     minSize: Size.LITTLE,
     maxSize: Size.ENORMOUS,
-    fixed: ["prejudice", "weapon"],
-    optional: ["disease", "ranged", "spellcaster"],
+    fixed: ["prejudice", "weapon", "brute"],
+    optional: ["disease", "ranged", "spellcaster", "champion"],
 };

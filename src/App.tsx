@@ -75,6 +75,7 @@ class App extends React.Component<{}, Icharacter> {
                         baseStats={this.state.baseStats}
                         statModifiers={this.state.statModifiers}
                         improvements={this.state.statModifiers}
+                        traits={this.state.traits}
                         handleChange={this.setStatModifiers}
                     />
                     <SizeSelector

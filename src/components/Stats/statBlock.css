@@ -8,9 +8,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.stat-block__randomize {
+    border: thin solid black;
+    padding: 0 12px 0 8px;
+    margin-left: 4px;
     cursor: pointer;
 }
 
 .stat-block__values.collapsed span {
+    display: none;
+}
+
+.stat-block__sums {
+    padding-top: 4px;
+}
+.collapsed .stat-block__sums {
+    font-weight: normal;
+}
+
+.stat-block__controls .collapse {
+    cursor: pointer;
+}
+.stat-block__controls .expand {
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.stat-block__controls .expand ~ * {
     display: none;
 }

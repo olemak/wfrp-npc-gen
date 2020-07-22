@@ -1,3 +1,4 @@
+import { statName } from "../../components/Skills/SkillList";
 export type traitName =
     | "afraid"
     | "amphibious"
@@ -76,7 +77,13 @@ export type traitName =
     | "weapon"
     | "web";
 
-export const traitsManifest: { value: traitName; label: string }[] = [
+export type effectType = [statName, number];
+
+export const traitsManifest: {
+    value: traitName;
+    label: string;
+    effect?: effectType[];
+}[] = [
     { value: "afraid", label: "Afraid (Target)" },
     { value: "amphibious", label: "Amphibious" },
     { value: "arboreal", label: "Arboreal" },
@@ -87,10 +94,25 @@ export const traitsManifest: { value: traitName; label: string }[] = [
     { value: "blessed", label: "Blessed (Various)" },
     { value: "bounce", label: "Bounce" },
     { value: "breath", label: "Breath Rating (Type)" },
-    { value: "brute", label: "Brute" },
+    {
+        value: "brute",
+        label: "Brute",
+        effect: [
+            /*["M",–1,*/ ["Ag", -10],
+            ["S", 10],
+            ["T", 10],
+        ],
+    },
     { value: "champion", label: "Champion" },
     { value: "chillgrasp", label: "Chill Grasp" },
-    { value: "clever", label: "Clever" },
+    {
+        value: "clever",
+        label: "Clever",
+        effect: [
+            ["Int", 20],
+            ["I", 10],
+        ],
+    },
     { value: "coldblooded", label: "Cold-blooded" },
     { value: "constrictor", label: "Constrictor" },
     { value: "construct", label: "Construct" },
@@ -102,7 +124,15 @@ export const traitsManifest: { value: traitName; label: string }[] = [
     { value: "diehard", label: "Die Hard" },
     { value: "disease", label: "Disease (Type)" },
     { value: "distracting", label: "Distracting" },
-    { value: "elite", label: "Elite" },
+    {
+        value: "elite",
+        label: "Elite",
+        effect: [
+            ["WS", 20],
+            ["BS", 20],
+            ["WP", 20],
+        ],
+    },
     { value: "ethereal", label: "Ethereal" },
     { value: "fast", label: "Fast" },
     { value: "fear", label: "Fear (Rating)" },

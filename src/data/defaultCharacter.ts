@@ -17,6 +17,21 @@ export interface Icharacter {
     statModifiers: Istats;
     statImprovements: Istats[];
 }
+
+export const nullStats: Istats = {
+    M: 0,
+    WS: 0,
+    BS: 0,
+    S: 0,
+    T: 0,
+    I: 0,
+    Ag: 0,
+    Dex: 0,
+    Int: 0,
+    WP: 0,
+    Fel: 0,
+};
+
 export const defaultCharacter: Icharacter = {
     name: "New Character",
     value: "human",
@@ -26,6 +41,7 @@ export const defaultCharacter: Icharacter = {
     generic: [],
     careers: [],
     baseStats: {
+        M: 4,
         WS: 30,
         BS: 30,
         S: 30,
@@ -37,17 +53,6 @@ export const defaultCharacter: Icharacter = {
         WP: 30,
         Fel: 30,
     },
-    statModifiers: {
-        WS: 0,
-        BS: 0,
-        S: 0,
-        T: 0,
-        I: 0,
-        Ag: 0,
-        Dex: 0,
-        Int: 0,
-        WP: 0,
-        Fel: 0,
-    },
+    statModifiers: Object.assign({}, nullStats),
     statImprovements: [],
 };

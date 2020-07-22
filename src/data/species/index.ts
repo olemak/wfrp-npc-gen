@@ -7,6 +7,7 @@ import { Size } from "../../components/Size/SizeEnum";
 export type speciesName = "human" | "dwarf" | "halfling";
 
 export interface Istats {
+    M: number;
     WS: number;
     BS: number;
     S: number;

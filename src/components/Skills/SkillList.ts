@@ -1,4 +1,4 @@
-type statName =
+export type statName =
     | "WS"
     | "BS"
     | "S"

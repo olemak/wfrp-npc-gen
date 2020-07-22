@@ -1,12 +1,15 @@
 import * as React from "react";
 import "./statBlock.css";
 import { Istats } from "../../data/species/index";
+import { nullStats } from "../../data/defaultCharacter";
+import { statName } from "../Skills/SkillList";
 
 interface IStatBlock {
     species: string;
     improvements: any;
     baseStats: any;
     statModifiers: any;
+    traits: any;
     handleChange: (statModifiers: Istats) => void;
 }
 
@@ -15,13 +18,29 @@ export const StatBlock = ({
     improvements,
     baseStats,
     statModifiers,
+    traits,
     handleChange,
 }: IStatBlock) => {
     const [showRows, setShowRows] = React.useState(true);
+    const [statsEffected, setStatsEffected] = React.useState(nullStats);
     const keys: string[] = Object.keys(improvements);
 
     const toggle = () => {
         setShowRows(!showRows);
+    };
+
+    const calculateStatModifiers = (traits: any) => {};
+
+    React.useEffect(() => {
+        console.log("Received new traits");
+        console.log(statsEffected);
+        calculateStatModifiers(traits);
+
+        setStatsEffected(nullStats);
+    }, [traits, statsEffected]);
+
+    const listAffectedStat = (key: string) => {
+        return statsEffected[key as statName];
     };
 
     const calculateStats = (key: string): React.ReactNode => {
@@ -34,7 +53,7 @@ export const StatBlock = ({
         const x = () =>
             Math.floor(Math.random() * 11) - Math.floor(Math.random() * 9);
 
-        keys.map((key) => (newStatMods[key] = x()));
+        keys.map((key) => (key === "M" ? 0 : (newStatMods[key] = x())));
 
         handleChange(newStatMods);
     };
@@ -54,7 +73,11 @@ export const StatBlock = ({
                     <strong>{key}</strong>
                     <span>{baseStats[key]}</span>
                     <span>{improvements[key]}</span>
-                    <strong>{calculateStats(key)}</strong>
+                    <span>{listAffectedStat(key)}</span>
+
+                    <strong className="stat-block__sums">
+                        {calculateStats(key)}
+                    </strong>
                 </div>
             ))}
 
@@ -63,13 +86,20 @@ export const StatBlock = ({
                     onClick={toggle}
                     className={showRows ? "collapse" : "expand"}
                 >
-                    {showRows ? "Collapse" : "Expand"}
+                    {showRows ? (
+                        <span>Collapse &#8679;</span>
+                    ) : (
+                        <span> &#8681;</span>
+                    )}
                 </strong>
                 <span>&#8678; Base Stats</span>
-                <span>
-                    &#8678;{" "}
-                    <strong onClick={randomizeStatModifiers}>Random</strong>
+                <span
+                    className="stat-block__randomize"
+                    onClick={randomizeStatModifiers}
+                >
+                    Randomize
                 </span>
+                <span>&#8678; Advances</span>
                 <span>&#8678; Sum</span>
             </div>
         </section>

@@ -5,6 +5,7 @@ export const dwarf: ISpecies = {
     value: "dwarf",
     label: "Dwarf",
     baseStats: {
+        M: 3,
         WS: 40,
         BS: 30,
         S: 30,
