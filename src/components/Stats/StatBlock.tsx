@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./statBlock.css";
-import { Istats } from "../data/species/index";
+import { Istats } from "../../data/species/index";
 
 interface IStatBlock {
     species: string;

@@ -15,7 +15,7 @@ import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
 
 import "./App.css";
 import { SizeSelector } from "./components/Size/SizeSelector";
-import { StatBlock } from "./components/StatBlock";
+import { StatBlock } from "./components/Stats/StatBlock";
 import { Istats } from "./data/species";
 
 class App extends React.Component<{}, Icharacter> {
