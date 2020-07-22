@@ -22,6 +22,6 @@ export const human: ISpecies = {
     size: Size.AVERAGE,
     minSize: Size.LITTLE,
     maxSize: Size.ENORMOUS,
-    fixed: ["prejudice", "weapon", "brute"],
-    optional: ["disease", "ranged", "spellcaster", "champion"],
+    fixed: ["prejudice", "weapon"],
+    optional: ["disease", "ranged", "spellcaster"],
 };

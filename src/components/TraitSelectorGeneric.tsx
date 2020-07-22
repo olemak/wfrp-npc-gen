@@ -20,11 +20,14 @@ export const TraitSelectorGeneric = ({
     };
 
     return (
-        <Select
-            options={genericTraitOptions}
-            placeholder={text.npc.GenericTraits}
-            onChange={setTraitsGeneric}
-            isMulti
-        />
+        <section>
+            <Select
+                options={genericTraitOptions}
+                placeholder={text.npc.GenericTraits}
+                onChange={setTraitsGeneric}
+                isMulti
+            />
+            <span>{text.npc.AltersStats}</span>
+        </section>
     );
 };

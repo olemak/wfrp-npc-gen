@@ -1,39 +1,31 @@
 import { statName } from "../../components/Skills/SkillList";
 export type traitName =
-    | "afraid"
     | "amphibious"
     | "arboreal"
     | "animosity"
-    | "Armour"
+    | "armour"
     | "bestial"
     | "bite"
     | "blessed"
     | "bounce"
     | "breath"
-    | "brute"
-    | "champion"
     | "chillgrasp"
-    | "clever"
     | "coldblooded"
     | "constrictor"
     | "construct"
     | "corrosiveblood"
     | "corruption"
-    | "cunning"
     | "darkvision"
     | "daemonic"
     | "diehard"
     | "disease"
     | "distracting"
-    | "elite"
     | "ethereal"
-    | "fast"
     | "fear"
     | "flight"
     | "frenzy"
     | "fury"
     | "ghostlyhowl"
-    | "hardy"
     | "hatred"
     | "horns"
     | "hungry"
@@ -41,7 +33,6 @@ export type traitName =
     | "immunitypsychology"
     | "infected"
     | "infestation"
-    | "leader"
     | "magical"
     | "magicresistance"
     | "mentalcorruption"
@@ -65,7 +56,6 @@ export type traitName =
     | "terror"
     | "trained"
     | "tongueattack"
-    | "tough"
     | "tracker"
     | "undead"
     | "unstable"
@@ -84,63 +74,32 @@ export const traitsManifest: {
     label: string;
     effect?: effectType[];
 }[] = [
-    { value: "afraid", label: "Afraid (Target)" },
     { value: "amphibious", label: "Amphibious" },
     { value: "arboreal", label: "Arboreal" },
     { value: "animosity", label: "Animosity (Target)" },
-    { value: "Armour", label: "Armour (Rating)" },
+    { value: "armour", label: "Armour (Rating)" },
     { value: "bestial", label: "Bestial" },
     { value: "bite", label: "Bite (Rating)" },
     { value: "blessed", label: "Blessed (Various)" },
     { value: "bounce", label: "Bounce" },
     { value: "breath", label: "Breath Rating (Type)" },
-    {
-        value: "brute",
-        label: "Brute",
-        effect: [
-            /*["M",–1,*/ ["Ag", -10],
-            ["S", 10],
-            ["T", 10],
-        ],
-    },
-    { value: "champion", label: "Champion" },
     { value: "chillgrasp", label: "Chill Grasp" },
-    {
-        value: "clever",
-        label: "Clever",
-        effect: [
-            ["Int", 20],
-            ["I", 10],
-        ],
-    },
     { value: "coldblooded", label: "Cold-blooded" },
     { value: "constrictor", label: "Constrictor" },
     { value: "construct", label: "Construct" },
     { value: "corrosiveblood", label: "Corrosive Blood" },
     { value: "corruption", label: "Corruption (Strength)" },
-    { value: "cunning", label: "Cunning" },
     { value: "darkvision", label: "Dark Vision" },
     { value: "daemonic", label: "Daemonic (Target)" },
     { value: "diehard", label: "Die Hard" },
     { value: "disease", label: "Disease (Type)" },
     { value: "distracting", label: "Distracting" },
-    {
-        value: "elite",
-        label: "Elite",
-        effect: [
-            ["WS", 20],
-            ["BS", 20],
-            ["WP", 20],
-        ],
-    },
     { value: "ethereal", label: "Ethereal" },
-    { value: "fast", label: "Fast" },
     { value: "fear", label: "Fear (Rating)" },
     { value: "flight", label: "Flight (Rating)" },
     { value: "frenzy", label: "Frenzy" },
     { value: "fury", label: "Fury" },
     { value: "ghostlyhowl", label: "Ghostly Howl" },
-    { value: "hardy", label: "Hardy" },
     { value: "hatred", label: "Hatred (Target)" },
     { value: "horns", label: "Horns Rating (Feature)" },
     { value: "hungry", label: "Hungry" },
@@ -148,7 +107,6 @@ export const traitsManifest: {
     { value: "immunitypsychology", label: "Immunity to Psychology" },
     { value: "infected", label: "Infected" },
     { value: "infestation", label: "Infestation" },
-    { value: "leader", label: "Leader" },
     { value: "magical", label: "Magical" },
     { value: "magicresistance", label: "Magic Resistance (Rating)" },
     { value: "mentalcorruption", label: "Mental Corruption" },
@@ -172,7 +130,6 @@ export const traitsManifest: {
     { value: "terror", label: "Terror (Rating)" },
     { value: "trained", label: "Trained (Trained Skills)" },
     { value: "tongueattack", label: "Tongue Attack Rating (Range)" },
-    { value: "tough", label: "Tough" },
     { value: "tracker", label: "Tracker" },
     { value: "undead", label: "Undead" },
     { value: "unstable", label: "Unstable" },

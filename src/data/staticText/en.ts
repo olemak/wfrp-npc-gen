@@ -17,6 +17,7 @@ export const staticText = {
         selectSpecies: "Select species",
         FixedSpeciesTraits: "Fixed traits",
         OptionalSpeciesTraits: "Optional traits",
+        AltersStats: "*) Effects stats.",
         GenericTraits: "Generic traits",
         size: "Size",
 
