@@ -11,7 +11,7 @@ export interface Icharacter {
     wounds?: number;
     move?: number;
     traits: string[];
-    generic: string[];
+    generic: any[];
     careers: string[];
     baseStats: Istats;
     statModifiers: Istats;

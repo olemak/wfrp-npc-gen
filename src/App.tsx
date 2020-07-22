@@ -48,11 +48,14 @@ class App extends React.Component<{}, Icharacter> {
     }
 
     setTraitsGeneric(newTraits: ITraitSelectorOption[]) {
+        /*
         const newTraitNames: string[] = newTraits.map((trait) => trait.label);
 
         if (newTraits.length !== this.state.generic.length) {
             this.setState({ generic: newTraitNames });
         }
+        */
+        this.setState({ generic: newTraits });
     }
 
     setSize(newSize: any) {
@@ -76,6 +79,7 @@ class App extends React.Component<{}, Icharacter> {
                         statModifiers={this.state.statModifiers}
                         improvements={this.state.statModifiers}
                         traits={this.state.traits}
+                        generic={this.state.generic}
                         handleChange={this.setStatModifiers}
                     />
                     <SizeSelector

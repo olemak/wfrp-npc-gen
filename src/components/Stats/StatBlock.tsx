@@ -10,6 +10,7 @@ interface IStatBlock {
     baseStats: any;
     statModifiers: any;
     traits: any;
+    generic: any;
     handleChange: (statModifiers: Istats) => void;
 }
 
@@ -19,6 +20,7 @@ export const StatBlock = ({
     baseStats,
     statModifiers,
     traits,
+    generic,
     handleChange,
 }: IStatBlock) => {
     const [showRows, setShowRows] = React.useState(true);
@@ -29,22 +31,35 @@ export const StatBlock = ({
         setShowRows(!showRows);
     };
 
-    const calculateStatModifiers = (traits: any) => {};
+    const calculateStatModifiers = (traits: any, generic: any) => {
+        const newModifiers: any = Object.assign({}, nullStats);
+        const getEffects = (trait: any) => trait.effect;
+        const traitsWithEffect = traits.concat(generic).filter(getEffects);
+        const effects = [].concat(...traitsWithEffect.map(getEffects));
+
+        for (let effect of effects) {
+            const stat: statName = effect[0];
+            newModifiers[stat] += effect[1];
+        }
+
+        return newModifiers;
+    };
 
     React.useEffect(() => {
-        console.log("Received new traits");
-        console.log(statsEffected);
-        calculateStatModifiers(traits);
-
-        setStatsEffected(nullStats);
-    }, [traits, statsEffected]);
+        setStatsEffected(calculateStatModifiers(traits, generic));
+    }, [traits, generic]);
 
     const listAffectedStat = (key: string) => {
         return statsEffected[key as statName];
     };
 
     const calculateStats = (key: string): React.ReactNode => {
-        return baseStats[key] + improvements[key];
+        const advancesFromTraitsAndTalents = statsEffected as any;
+        return (
+            baseStats[key] +
+            improvements[key] +
+            advancesFromTraitsAndTalents[key]
+        );
     };
 
     const randomizeStatModifiers = () => {

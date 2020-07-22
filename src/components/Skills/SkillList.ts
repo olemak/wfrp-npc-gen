@@ -1,4 +1,5 @@
 export type statName =
+    | "M"
     | "WS"
     | "BS"
     | "S"
