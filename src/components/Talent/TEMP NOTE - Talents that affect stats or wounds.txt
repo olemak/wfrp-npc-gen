@@ -1,0 +1,67 @@
+Coolheaded
+Max: 1
+You gain a permanent +5 bonus to your starting Willpower
+Characteristic this does not count towards your Advances.
+
++++Fleet Footed
+Max: 1
+You gain +1 to your Movement Attribute.
+
+
+****Hardy
+Max: Toughness Bonus
+You gain a permanent addition to your Wounds, equal to your
+Toughness Bonus. If your Toughness Bonus should increase, then
+the number of Wounds Hardy provides also increases.
+
+
+**** Lightning Reflexes
+Max: 1
+You gain a permanent +5 bonus to your starting Agility
+Characteristic (this does not count towards your Advances).
+
+***** Marksman
+Max: 1
+You gain a permanent +5 bonus to your starting Ballistic Skill
+(this does not count towards your Advances).
+
+
+**** Nimble Fingered
+Max: 1
+You gain a permanent +5 bonus to your starting Dexterity (this
+does not count towards your Advances).
+
+**** Savvy
+Max: 1
+You gain a permanent +5 bonus to your starting Intelligence
+Characteristic (this does not count towards your Advances).
+
+**** Sharp
+Max: 1
+You gain a permanent +5 bonus to your starting Initiative
+Characteristic (this does not count towards your Advances).
+
+
+
+Strike Mighty Blow
+Max: Strength Bonus
+You know how to hit hard! You deal your level of Strike Mighty
+Blow in extra Damage with melee weapons.
+
+****Suave
+Max: 1
+You gain a permanent +5 bonus to your starting Fellowship
+Characteristic (this does not count towards your Advances).
+
+Very Resilient
+Max: 1
+You gain a permanent +5 bonus to your starting Toughness
+Characteristic (this does not count towards your Advances).
+Very Strong
+Max: 1
+You gain a permanent +5 bonus to your starting Strength
+Characteristic (this does not count towards your Advances).
+Warrior Born
+Max: 1
+You gain a permanent +5 bonus to your starting Weapon Skill
+Characteristic (doesn’t count as Advances).
