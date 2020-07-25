@@ -1,0 +1,12 @@
+.character__talents ul {
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.character__talents li {
+    width: 25%;
+    display: inline-flex;
+}

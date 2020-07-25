@@ -3,3 +3,8 @@ main {
     margin: 0 auto;
     padding: 1rem;
 }
+
+.character__details {
+    display: flex;
+    align-content: space-between;
+}
