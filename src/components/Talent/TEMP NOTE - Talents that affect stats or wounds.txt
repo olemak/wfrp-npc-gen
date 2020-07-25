@@ -1,67 +1,19 @@
-Coolheaded
-Max: 1
-You gain a permanent +5 bonus to your starting Willpower
-Characteristic this does not count towards your Advances.
-
-+++Fleet Footed
-Max: 1
-You gain +1 to your Movement Attribute.
-
-
-****Hardy
+Hardy
 Max: Toughness Bonus
 You gain a permanent addition to your Wounds, equal to your
 Toughness Bonus. If your Toughness Bonus should increase, then
 the number of Wounds Hardy provides also increases.
 
-
-**** Lightning Reflexes
-Max: 1
-You gain a permanent +5 bonus to your starting Agility
-Characteristic (this does not count towards your Advances).
-
-***** Marksman
-Max: 1
-You gain a permanent +5 bonus to your starting Ballistic Skill
-(this does not count towards your Advances).
-
-
-**** Nimble Fingered
-Max: 1
-You gain a permanent +5 bonus to your starting Dexterity (this
-does not count towards your Advances).
-
-**** Savvy
-Max: 1
-You gain a permanent +5 bonus to your starting Intelligence
-Characteristic (this does not count towards your Advances).
-
-**** Sharp
-Max: 1
-You gain a permanent +5 bonus to your starting Initiative
-Characteristic (this does not count towards your Advances).
+Fleet Footed +1 Movement
+Coolheaded          +5 WP
+Lightning Reflexes  +5 Ag
+Marksman            +5 BS
+Nimble Fingered     +5 Dex
+Savvy               +5 Int
+Sharp               +5 I
+Suave               +5 Fel
+Very Resilient      +5 T
+Very Strong         +5 S
+Warrior Born        +5 WS
 
 
-
-Strike Mighty Blow
-Max: Strength Bonus
-You know how to hit hard! You deal your level of Strike Mighty
-Blow in extra Damage with melee weapons.
-
-****Suave
-Max: 1
-You gain a permanent +5 bonus to your starting Fellowship
-Characteristic (this does not count towards your Advances).
-
-Very Resilient
-Max: 1
-You gain a permanent +5 bonus to your starting Toughness
-Characteristic (this does not count towards your Advances).
-Very Strong
-Max: 1
-You gain a permanent +5 bonus to your starting Strength
-Characteristic (this does not count towards your Advances).
-Warrior Born
-Max: 1
-You gain a permanent +5 bonus to your starting Weapon Skill
-Characteristic (doesn’t count as Advances).

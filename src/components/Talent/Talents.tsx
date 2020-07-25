@@ -3,12 +3,48 @@ import "./talents.css";
 import { selectedCareersType } from "../Career/CareerSelector";
 import { nullCareer } from "../Career/CareerList";
 import { careerList } from "./../Career/CareerList";
+import { talentName } from "./Talent";
 
 interface ITalents {
     careerSet: selectedCareersType;
+    handleChange: (effectTalent: effectTalentNameType[]) => void;
+    talentsWithEffectInApp: effectTalentNameType[];
 }
 
-export const Talents = ({ careerSet }: ITalents) => {
+export type effectTalentNameType =
+    | "Hardy"
+    | "Fleet Footed"
+    | "Coolheaded"
+    | "Lightning Reflexes"
+    | "Marksman"
+    | "Nimble Fingered"
+    | "Savvy"
+    | "Sharp"
+    | "Suave"
+    | "Very Resilient"
+    | "Very Strong"
+    | "Warrior Born";
+
+const talentsWithEffect: effectTalentNameType[] = [
+    "Hardy",
+    "Fleet Footed",
+    "Coolheaded",
+    "Lightning Reflexes",
+    "Marksman",
+    "Nimble Fingered",
+    "Savvy",
+    "Sharp",
+    "Suave",
+    "Very Resilient",
+    "Very Strong",
+    "Warrior Born",
+];
+
+export const Talents = ({
+    careerSet,
+    handleChange,
+    talentsWithEffectInApp,
+}: ITalents) => {
     const [careers, setCareers] = React.useState([
         nullCareer,
         nullCareer,
@@ -68,6 +104,21 @@ export const Talents = ({ careerSet }: ITalents) => {
     React.useEffect(findCareers, [careerSet]);
 
     const activeTalents = characterTalents();
+
+    const updateEffectTalents = () => {
+        const activeTalentsWithEffects = activeTalents.filter((talent: any) =>
+            talentsWithEffect.includes(talent)
+        );
+
+        if (activeTalentsWithEffects.length !== talentsWithEffectInApp.length) {
+            handleChange(activeTalentsWithEffects as effectTalentNameType[]);
+        }
+    };
+
+    React.useEffect(updateEffectTalents, [
+        activeTalents,
+        talentsWithEffectInApp,
+    ]);
 
     const TalentPartial = (talent: any) => (
         <li key={`active-talent--${talent.replace(/\s/g, "").toLowerCase()}`}>

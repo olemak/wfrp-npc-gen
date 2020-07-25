@@ -22,7 +22,7 @@ import { StatBlock } from "./components/Stats/StatBlock";
 import { Istats } from "./data/species";
 import { Wounds } from "./components/Wounds/Wounds";
 import { Skills } from "./components/Skills/Skills";
-import { Talents } from "./components/Talent/Talents";
+import { Talents, effectTalentNameType } from "./components/Talent/Talents";
 
 class App extends React.Component<{}, Icharacter> {
     constructor(props: Icharacter) {
@@ -34,6 +34,7 @@ class App extends React.Component<{}, Icharacter> {
         this.setSize = this.setSize.bind(this);
         this.setStatModifiers = this.setStatModifiers.bind(this);
         this.setCareers = this.setCareers.bind(this);
+        this.setEffectTalents = this.setEffectTalents.bind(this);
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
@@ -66,6 +67,10 @@ class App extends React.Component<{}, Icharacter> {
         this.setState({ careerSet: selectedCareers });
     }
 
+    setEffectTalents(effectTalents: any[]) {
+        this.setState({ effectTalents });
+    }
+
     render() {
         return (
             <Text.Provider value={text}>
@@ -85,6 +90,7 @@ class App extends React.Component<{}, Icharacter> {
                         traits={this.state.traits}
                         generic={this.state.generic}
                         handleChange={this.setStatModifiers}
+                        effectTalents={this.state.effectTalents}
                     />
                     <section className="character__details">
                         <SizeSelector
@@ -114,7 +120,11 @@ class App extends React.Component<{}, Icharacter> {
                         Careers
                     </CareerSelector>
                     <Skills />
-                    <Talents careerSet={this.state.careerSet} />
+                    <Talents
+                        careerSet={this.state.careerSet}
+                        handleChange={this.setEffectTalents}
+                        talentsWithEffectInApp={this.state.effectTalents}
+                    />
                 </main>
             </Text.Provider>
         );
