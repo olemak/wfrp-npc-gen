@@ -8,7 +8,10 @@ import {
     ITraitSelectorOption,
 } from "./components/TraitSelectorSpecies";
 import { TraitSelectorGeneric } from "./components/TraitSelectorGeneric";
-import { CareerSelector } from "./components/CareerSelector";
+import {
+    CareerSelector,
+    selectedCareersType,
+} from "./components/Career/CareerSelector";
 
 import { Text, text } from "./context";
 import { defaultCharacter, Icharacter } from "./data/defaultCharacter";
@@ -27,6 +30,7 @@ class App extends React.Component<{}, Icharacter> {
         this.setTraitsGeneric = this.setTraitsGeneric.bind(this);
         this.setSize = this.setSize.bind(this);
         this.setStatModifiers = this.setStatModifiers.bind(this);
+        this.setCareers = this.setCareers.bind(this);
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
@@ -48,18 +52,15 @@ class App extends React.Component<{}, Icharacter> {
     }
 
     setTraitsGeneric(newTraits: ITraitSelectorOption[]) {
-        /*
-        const newTraitNames: string[] = newTraits.map((trait) => trait.label);
-
-        if (newTraits.length !== this.state.generic.length) {
-            this.setState({ generic: newTraitNames });
-        }
-        */
         this.setState({ generic: newTraits });
     }
 
     setSize(newSize: any) {
         this.setState({ size: newSize });
+    }
+
+    setCareers(selectedCareers: selectedCareersType) {
+        this.setState({ careerSet: selectedCareers });
     }
 
     render() {
@@ -98,7 +99,12 @@ class App extends React.Component<{}, Icharacter> {
                     <TraitSelectorGeneric
                         handleChange={this.setTraitsGeneric}
                     />
-                    <CareerSelector>Careers</CareerSelector>
+                    <CareerSelector
+                        handleChange={this.setCareers}
+                        careerSet={this.state.careerSet}
+                    >
+                        Careers
+                    </CareerSelector>
                 </main>
             </Text.Provider>
         );

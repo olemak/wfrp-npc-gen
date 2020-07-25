@@ -17,7 +17,12 @@ export const miner: Icareer = {
                 "swim",
             ],
             advances: ["S", "T", "WP"],
-            talents: ["Rover", "Strider (Rocky)", "Sturdy", "Tenacious"],
+            talents: [
+                "Rover",
+                ["Strider (Terrain)", "Rocky"],
+                "Sturdy",
+                "Tenacious",
+            ],
             trappings: ["Charcoal Stick", "Crude Map", "Pan", "Spade"],
         },
         {
@@ -57,7 +62,7 @@ export const miner: Icareer = {
             advances: ["I"],
             talents: [
                 "Careful Strike",
-                "Craftsman (Explosives)",
+                ["Craftsman (Trade)", "Explosives)"],
                 "Tinker",
                 "Tunnel Rat",
             ],
@@ -72,7 +77,12 @@ export const miner: Icareer = {
             status: ["Silver", 4],
             skills: ["charm", "leadership"],
             advances: ["Fel"],
-            talents: ["argumentative", "strongminded", "embezzle", "readwrite"],
+            talents: [
+                "Argumentative",
+                "Strong-minded",
+                "Embezzle",
+                "Read/Write",
+            ],
             trappings: ["Crew of Miners", "Writing Kit"],
         },
     ],

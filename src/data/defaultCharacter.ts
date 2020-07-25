@@ -1,5 +1,6 @@
 import { speciesName, Istats } from "./species/index";
 import { Size } from "../components/Size/SizeEnum";
+import { selectedCareersType } from "../components/Career/CareerSelector";
 
 export interface Icharacter {
     name: string;
@@ -16,6 +17,7 @@ export interface Icharacter {
     baseStats: Istats;
     statModifiers: Istats;
     statImprovements: Istats[];
+    careerSet: selectedCareersType;
 }
 
 export const nullStats: Istats = {
@@ -55,4 +57,18 @@ export const defaultCharacter: Icharacter = {
     },
     statModifiers: Object.assign({}, nullStats),
     statImprovements: [],
+    careerSet: [
+        {
+            careerId: null,
+            careerTiers: [false, false, false, false],
+        },
+        {
+            careerId: null,
+            careerTiers: [false, false, false, false],
+        },
+        {
+            careerId: null,
+            careerTiers: [false, false, false, false],
+        },
+    ],
 };

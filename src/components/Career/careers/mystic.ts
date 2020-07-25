@@ -1,7 +1,7 @@
 import { Icareer } from "./../CareerList";
 export const mystic: Icareer = {
     value: "mystic",
-    label: "Mystic - Prospector, Miner, Master Miner, Mine Foreman",
+    label: "Mystic - Fortune Teller, Mystic, Sage, Seer",
     tier: [
         {
             label: "Fortune Teller",
@@ -17,7 +17,7 @@ export const mystic: Icareer = {
                 "sleightofhand",
             ],
             advances: ["I", "Dex", "Fel"],
-            talents: ["attractive", "luck", "secondsight", "suave"],
+            talents: ["Attractive", "Luck", "Second Sight", "Suave"],
             trappings: ["Deck of Cards or Dice", "Cheap Jewellery"],
         },
         {
@@ -34,10 +34,10 @@ export const mystic: Icareer = {
             ],
             advances: ["WP"],
             talents: [
-                "detectartefact",
-                "holyvisions",
-                "sixthsense",
-                "wellprepared",
+                "Detect Artefact",
+                "Holy Visions",
+                "Sixth Sense",
+                "Well-prepared",
             ],
             trappings: ["Selection of Amulets"],
         },
@@ -51,7 +51,12 @@ export const mystic: Icareer = {
                 ["language", "any"],
             ],
             advances: ["Ag"],
-            talents: ["nosefortrouble", "pettymagic", "readwrite", "witch"],
+            talents: [
+                "Nose for Trouble",
+                "Petty Magic",
+                "Read/Write",
+                "Witch!",
+            ],
             trappings: ["Trade Tools (Writing)"],
         },
         {
@@ -63,10 +68,10 @@ export const mystic: Icareer = {
             ],
             advances: ["Int"],
             talents: [
-                ["arcanemagic", "Celestial"],
-                "magicalsense",
-                "menacing",
-                "strongminded",
+                ["Arcane Magic (Lore)", "Celestial"],
+                "Magical Sense",
+                "Menacing",
+                "Strong-minded",
             ],
             trappings: ["Trade Tools (Astrology)"],
         },
