@@ -69,7 +69,11 @@ export const Talents = ({ careerSet }: ITalents) => {
 
     const activeTalents = characterTalents();
 
-    const TalentPartial = (trait: any) => <li>{trait}</li>;
+    const TalentPartial = (talent: any) => (
+        <li key={`active-talent--${talent.replace(/\s/g, "").toLowerCase()}`}>
+            {talent}
+        </li>
+    );
 
     if (activeTalents.length > 0) {
         return (
