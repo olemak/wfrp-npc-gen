@@ -84,6 +84,7 @@ export const StatBlock = ({
                     className={`stat-block__values ${
                         showRows ? "expanded" : "collapsed"
                     }`}
+                    key={`stat-key--${key}`}
                 >
                     <strong>{key}</strong>
                     <span>{baseStats[key]}</span>
