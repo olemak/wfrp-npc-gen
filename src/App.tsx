@@ -22,7 +22,7 @@ import { StatBlock } from "./components/Stats/StatBlock";
 import { Istats } from "./data/species";
 import { Wounds } from "./components/Wounds/Wounds";
 import { Skills } from "./components/Skills/Skills";
-import { Talents, effectTalentNameType } from "./components/Talent/Talents";
+import { Talents } from "./components/Talent/Talents";
 
 class App extends React.Component<{}, Icharacter> {
     constructor(props: Icharacter) {
@@ -35,6 +35,7 @@ class App extends React.Component<{}, Icharacter> {
         this.setStatModifiers = this.setStatModifiers.bind(this);
         this.setCareers = this.setCareers.bind(this);
         this.setEffectTalents = this.setEffectTalents.bind(this);
+        this.setFinalStats = this.setFinalStats.bind(this);
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
@@ -71,6 +72,10 @@ class App extends React.Component<{}, Icharacter> {
         this.setState({ effectTalents });
     }
 
+    setFinalStats(statsFinal: Istats) {
+        this.setState({ statsFinal });
+    }
+
     render() {
         return (
             <Text.Provider value={text}>
@@ -91,6 +96,7 @@ class App extends React.Component<{}, Icharacter> {
                         generic={this.state.generic}
                         handleChange={this.setStatModifiers}
                         effectTalents={this.state.effectTalents}
+                        setFinalStats={this.setFinalStats}
                     />
                     <section className="character__details">
                         <SizeSelector
@@ -99,7 +105,11 @@ class App extends React.Component<{}, Icharacter> {
                             handleChange={this.setSize}
                             key={this.state.value}
                         />
-                        <Wounds />
+                        <Wounds
+                            talents={this.state.effectTalents}
+                            size={this.state.size}
+                            stats={this.state.statsFinal}
+                        />
                     </section>
 
                     <TraitSelectorSpecies

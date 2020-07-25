@@ -20,6 +20,7 @@ export const staticText = {
         AltersStats: "*) Effects stats.",
         GenericTraits: "Generic traits",
         size: "Size",
+        wounds: "Wounds",
 
         sizeStrings: {
             0: "Tiny",

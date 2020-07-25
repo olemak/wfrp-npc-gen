@@ -18,6 +18,7 @@ export interface Icharacter {
     baseStats: Istats;
     statModifiers: Istats;
     statImprovements: Istats[];
+    statsFinal: Istats;
     careerSet: selectedCareersType;
     effectTalents: effectTalentNameType[];
 }
@@ -59,6 +60,7 @@ export const defaultCharacter: Icharacter = {
     },
     statModifiers: Object.assign({}, nullStats),
     statImprovements: [],
+    statsFinal: nullStats,
     careerSet: [
         {
             careerId: null,

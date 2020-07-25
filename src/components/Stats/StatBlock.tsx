@@ -14,6 +14,7 @@ interface IStatBlock {
     generic: any;
     handleChange: (statModifiers: Istats) => void;
     effectTalents: effectTalentNameType[];
+    setFinalStats: (finalStats: Istats) => void;
 }
 
 export const StatBlock = ({
@@ -84,7 +85,10 @@ export const StatBlock = ({
 
     React.useEffect(() => {
         setStatsEffected(calculateStatModifiers(traits, generic));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [traits, generic, effectTalents]);
+
+    // todo: CALC AND SET FINAL STATS TO APP
 
     const listAffectedStat = (key: string) => {
         return statsEffected[key as statName];
