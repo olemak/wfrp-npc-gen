@@ -32,10 +32,10 @@ class App extends React.Component<{}, Icharacter> {
         this.setTraitsSpecies = this.setTraitsSpecies.bind(this);
         this.setTraitsGeneric = this.setTraitsGeneric.bind(this);
         this.setSize = this.setSize.bind(this);
-        this.setStatModifiers = this.setStatModifiers.bind(this);
+        this.setStatRandomModifiers = this.setStatRandomModifiers.bind(this);
         this.setCareers = this.setCareers.bind(this);
         this.setEffectTalents = this.setEffectTalents.bind(this);
-        this.setFinalStats = this.setFinalStats.bind(this);
+        this.setStatsAdvances = this.setStatsAdvances.bind(this);
     }
 
     setSpecies(newSpecies: ISpeciesSelectorOption, action: any) {
@@ -44,15 +44,15 @@ class App extends React.Component<{}, Icharacter> {
         }
     }
 
-    setStatModifiers(statModifiers: Istats) {
-        this.setState({ statModifiers });
+    setStatRandomModifiers(randomStatModifiers: Istats) {
+        this.setState({ statsRandom: randomStatModifiers });
     }
 
-    setTraitsSpecies(newTraits: ITraitSelectorOption[], baseStats: Istats) {
+    setTraitsSpecies(newTraits: ITraitSelectorOption[], statsBase: Istats) {
         const newTraitNames: string[] = newTraits.map((trait) => trait.label);
 
         if (newTraitNames.length !== this.state.traits.length) {
-            this.setState({ traits: newTraitNames, baseStats });
+            this.setState({ traits: newTraitNames, statsBase });
         }
     }
 
@@ -72,8 +72,8 @@ class App extends React.Component<{}, Icharacter> {
         this.setState({ effectTalents });
     }
 
-    setFinalStats(statsFinal: Istats) {
-        this.setState({ statsFinal });
+    setStatsAdvances(statsAdvances: Istats) {
+        this.setState({ statsAdvances });
     }
 
     render() {
@@ -89,14 +89,14 @@ class App extends React.Component<{}, Icharacter> {
                     />
                     <StatBlock
                         species={this.state.label}
-                        baseStats={this.state.baseStats}
-                        statModifiers={this.state.statModifiers}
-                        improvements={this.state.statModifiers}
+                        statsBase={this.state.statsBase}
+                        statsRandom={this.state.statsRandom}
+                        statsAdvances={this.state.statsAdvances}
+                        handleAdvance={this.setStatsAdvances}
                         traits={this.state.traits}
                         generic={this.state.generic}
-                        handleChange={this.setStatModifiers}
+                        handleChange={this.setStatRandomModifiers}
                         effectTalents={this.state.effectTalents}
-                        setFinalStats={this.setFinalStats}
                     />
                     <section className="character__details">
                         <SizeSelector
@@ -108,7 +108,6 @@ class App extends React.Component<{}, Icharacter> {
                         <Wounds
                             talents={this.state.effectTalents}
                             size={this.state.size}
-                            stats={this.state.statsFinal}
                         />
                     </section>
 

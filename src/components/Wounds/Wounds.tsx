@@ -6,7 +6,7 @@ import { Size } from "../Size/SizeEnum";
 import { Text } from "../../context";
 
 interface IWounds {
-    stats: Istats;
+    stats?: Istats;
     talents: effectTalentNameType[];
     size: Size;
 }

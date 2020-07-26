@@ -7,29 +7,29 @@ import { effectTalentNameType } from "../Talent/Talents";
 
 interface IStatBlock {
     species: string;
-    improvements: any;
-    baseStats: any;
-    statModifiers: any;
+    statsBase: any;
+    statsRandom: any;
+    statsAdvances: any;
     traits: any;
     generic: any;
     handleChange: (statModifiers: Istats) => void;
+    handleAdvance: (statModifiers: Istats) => void;
     effectTalents: effectTalentNameType[];
-    setFinalStats: (finalStats: Istats) => void;
 }
 
 export const StatBlock = ({
-    species,
-    improvements,
-    baseStats,
-    statModifiers,
+    statsBase,
+    statsAdvances,
+    statsRandom,
     traits,
     generic,
     handleChange,
+    handleAdvance,
     effectTalents,
 }: IStatBlock) => {
     const [showRows, setShowRows] = React.useState(true);
     const [statsEffected, setStatsEffected] = React.useState(nullStats);
-    const keys: string[] = Object.keys(improvements);
+    const keys: string[] = Object.keys(nullStats);
 
     const toggle = () => {
         setShowRows(!showRows);
@@ -88,23 +88,20 @@ export const StatBlock = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [traits, generic, effectTalents]);
 
-    // todo: CALC AND SET FINAL STATS TO APP
+    React.useEffect(() => {
+        handleAdvance(statsEffected);
+    }, [handleAdvance, statsEffected]);
 
     const listAffectedStat = (key: string) => {
         return statsEffected[key as statName];
     };
 
     const calculateStats = (key: string): React.ReactNode => {
-        const advancesFromTraitsAndTalents = statsEffected as any;
-        return (
-            baseStats[key] +
-            improvements[key] +
-            advancesFromTraitsAndTalents[key]
-        );
+        return statsBase[key] + statsRandom[key] + statsAdvances[key];
     };
 
     const randomizeStatModifiers = () => {
-        const newStatMods = Object.assign({}, statModifiers);
+        const newStatMods = Object.assign({}, statsRandom);
 
         const x = () =>
             Math.floor(Math.random() * 11) - Math.floor(Math.random() * 9);
@@ -128,8 +125,8 @@ export const StatBlock = ({
                     key={`stat-key--${key}`}
                 >
                     <strong>{key}</strong>
-                    <span>{baseStats[key]}</span>
-                    <span>{improvements[key]}</span>
+                    <span>{statsBase[key]}</span>
+                    <span>{statsRandom[key]}</span>
                     <span>{listAffectedStat(key)}</span>
 
                     <strong className="stat-block__sums">

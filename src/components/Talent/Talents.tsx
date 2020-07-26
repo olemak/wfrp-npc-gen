@@ -3,7 +3,6 @@ import "./talents.css";
 import { selectedCareersType } from "../Career/CareerSelector";
 import { nullCareer } from "../Career/CareerList";
 import { careerList } from "./../Career/CareerList";
-import { talentName } from "./Talent";
 
 interface ITalents {
     careerSet: selectedCareersType;

@@ -15,10 +15,9 @@ export interface Icharacter {
     traits: string[];
     generic: any[];
     careers: string[];
-    baseStats: Istats;
-    statModifiers: Istats;
-    statImprovements: Istats[];
-    statsFinal: Istats;
+    statsBase: Istats;
+    statsRandom: Istats;
+    statsAdvances: Istats;
     careerSet: selectedCareersType;
     effectTalents: effectTalentNameType[];
 }
@@ -45,7 +44,7 @@ export const defaultCharacter: Icharacter = {
     traits: [],
     generic: [],
     careers: [],
-    baseStats: {
+    statsBase: {
         M: 4,
         WS: 30,
         BS: 30,
@@ -58,9 +57,8 @@ export const defaultCharacter: Icharacter = {
         WP: 30,
         Fel: 30,
     },
-    statModifiers: Object.assign({}, nullStats),
-    statImprovements: [],
-    statsFinal: nullStats,
+    statsRandom: nullStats,
+    statsAdvances: nullStats,
     careerSet: [
         {
             careerId: null,

@@ -62,7 +62,7 @@ export const miner: Icareer = {
             advances: ["I"],
             talents: [
                 "Careful Strike",
-                ["Craftsman (Trade)", "Explosives)"],
+                ["Craftsman (Trade)", "Explosives"],
                 "Tinker",
                 "Tunnel Rat",
             ],
