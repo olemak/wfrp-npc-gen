@@ -13,7 +13,6 @@ export const calculateWounds = (
         case Size.SMALL:
             return Toughness * 2;
         case Size.AVERAGE:
-            console.log({ Strength, Toughness, WillPower });
             return Strength + Toughness * 2 + WillPower;
         case Size.LARGE:
             return (Strength + Toughness * 2 + WillPower) * 2;

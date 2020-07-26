@@ -35,9 +35,6 @@ export const Wounds = ({
     );
 
     let wounds: number = calculateWounds(size, Toughness, WillPower, Strength);
-
-    console.log(talents, isHardy);
-
     wounds += isHardy ? Toughness * Toughness : 0;
 
     return (

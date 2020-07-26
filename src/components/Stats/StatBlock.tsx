@@ -77,6 +77,8 @@ export const StatBlock = ({
 
         const effects = traitEffects.concat(talentEffectsOnStats);
 
+        // TODO: (Next) Add stat advances from careers to effects, similar top talentEffectsOnStats/effectTalents - somehow :)
+
         for (let effect of effects) {
             if (effect) {
                 const stat: statName = effect[0];
