@@ -95,6 +95,7 @@ class App extends React.Component<{}, Icharacter> {
                         handleAdvance={this.setStatsAdvances}
                         traits={this.state.traits}
                         generic={this.state.generic}
+                        careerSet={this.state.careerSet}
                         handleChange={this.setStatRandomModifiers}
                         effectTalents={this.state.effectTalents}
                     />

@@ -77,4 +77,6 @@ export const nullCareer: Icareer = {
     ],
 };
 
-export const careerList = [miner, mystic];
+const none = Object.assign(nullCareer, { label: "None" });
+
+export const careerList = [none, miner, mystic];

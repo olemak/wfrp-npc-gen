@@ -4,6 +4,7 @@ import { Istats } from "../../data/species/index";
 import { nullStats } from "../../data/defaultCharacter";
 import { statName } from "../Skills/SkillList";
 import { effectTalentNameType } from "../Talent/Talents";
+import { careerList } from "../Career/CareerList";
 
 interface IStatBlock {
     species: string;
@@ -12,6 +13,7 @@ interface IStatBlock {
     statsAdvances: any;
     traits: any;
     generic: any;
+    careerSet: any;
     handleChange: (statModifiers: Istats) => void;
     handleAdvance: (statModifiers: Istats) => void;
     effectTalents: effectTalentNameType[];
@@ -23,6 +25,7 @@ export const StatBlock = ({
     statsRandom,
     traits,
     generic,
+    careerSet,
     handleChange,
     handleAdvance,
     effectTalents,
@@ -66,6 +69,54 @@ export const StatBlock = ({
         }
     };
 
+    const getCharacterAdvances = () => {
+        let allAdvanceEffects: any = [];
+
+        for (let careerIndex in careerSet) {
+            let currentAdvances: any = [];
+            const highestTier = careerSet[careerIndex].careerTiers.filter(
+                (x: boolean) => x
+            ).length;
+            const currentCareerId = careerSet[careerIndex].careerId;
+            if (currentCareerId) {
+                const currentCareerData = careerList.find((x) => {
+                    return x.value === careerSet[careerIndex].careerId;
+                });
+
+                for (let tierIndex = 0; tierIndex < 4; tierIndex++) {
+                    if (careerSet[careerIndex].careerTiers[tierIndex])
+                        currentAdvances.push(
+                            currentCareerData?.tier[tierIndex].advances
+                        );
+                }
+
+                // eslint-disable-next-line array-callback-return
+                currentAdvances.map((stats: statName[]) => {
+                    // eslint-disable-next-line array-callback-return
+                    stats.map((stat: statName) => {
+                        allAdvanceEffects.push([stat, 5 * highestTier]);
+                    });
+                });
+            }
+        }
+
+        /*
+        const cleanTraitNames = traits.map((trait: any) => {
+            if (typeof trait === "string") {
+                return trait;
+            } else {
+                return trait[0].replace(/\(([^)]+)\)/, `(${trait[1]})`);
+            }
+        });
+
+        return Array.from(new Set(cleanTraitNames.sort()));
+        */
+
+        console.log({ allAdvanceEffects });
+
+        return allAdvanceEffects;
+    };
+
     const calculateStatModifiers = (traits: any, generic: any) => {
         const newModifiers: any = Object.assign({}, nullStats);
         const getEffects = (trait: any) => trait.effect;
@@ -75,11 +126,15 @@ export const StatBlock = ({
 
         const traitEffects = [].concat(...traitsWithEffect.map(getEffects));
 
-        const effects = traitEffects.concat(talentEffectsOnStats);
+        const traintAndTalentEffects = traitEffects.concat(
+            talentEffectsOnStats
+        );
 
-        // TODO: (Next) Add stat advances from careers to effects, similar top talentEffectsOnStats/effectTalents - somehow :)
+        const allEffects = traintAndTalentEffects.concat(
+            getCharacterAdvances()
+        );
 
-        for (let effect of effects) {
+        for (let effect of allEffects) {
             if (effect) {
                 const stat: statName = effect[0];
                 newModifiers[stat] += effect[1];
@@ -92,7 +147,7 @@ export const StatBlock = ({
     React.useEffect(() => {
         setStatsEffected(calculateStatModifiers(traits, generic));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [traits, generic, effectTalents]);
+    }, [traits, generic, effectTalents, careerSet]);
 
     React.useEffect(() => {
         handleAdvance(statsEffected);

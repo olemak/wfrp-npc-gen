@@ -75,10 +75,20 @@ export const CareerSelector = ({
     const getCareerTierName = (careerIndex: number, index: number) =>
         localCareers[careerIndex].tier[index].label;
 
+    const filteredCareers = () =>
+        careerList.filter(
+            (career) =>
+                ![
+                    careerSet[0].careerId,
+                    careerSet[1].careerId,
+                    careerSet[2].careerId,
+                ].includes(career.value) || career.label === "None"
+        );
+
     return (
         <section className="career-selection">
             <Select
-                options={careerList}
+                options={filteredCareers()}
                 placeholder="You could add a career if you like!"
                 onChange={(option) => {
                     handleCareer(option, 0);
@@ -102,6 +112,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(0, 1);
                         }}
+                        disabled={!firstCareer.careerTiers[0]}
                     />
                     <label htmlFor="career-1-2">
                         {getCareerTierName(0, 1)}
@@ -112,6 +123,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(0, 2);
                         }}
+                        disabled={!firstCareer.careerTiers[1]}
                     />
                     <label htmlFor="career-1-3">
                         {getCareerTierName(0, 2)}
@@ -122,12 +134,13 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(0, 3);
                         }}
+                        disabled={!firstCareer.careerTiers[2]}
                     />
                     <label htmlFor="career-1-4">
                         {getCareerTierName(0, 3)}
                     </label>
                     <Select
-                        options={careerList}
+                        options={filteredCareers()}
                         placeholder="Add another career, if you must."
                         onChange={(option) => {
                             handleCareer(option, 1);
@@ -154,6 +167,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(1, 1);
                         }}
+                        disabled={!secondCareer.careerTiers[0]}
                     />
                     <label htmlFor="career-2-2">
                         {getCareerTierName(1, 1)}
@@ -164,6 +178,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(1, 2);
                         }}
+                        disabled={!secondCareer.careerTiers[1]}
                     />
                     <label htmlFor="career-2-3">
                         {getCareerTierName(1, 2)}
@@ -174,12 +189,13 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(1, 3);
                         }}
+                        disabled={!secondCareer.careerTiers[2]}
                     />
                     <label htmlFor="career-2-4">
                         {getCareerTierName(1, 3)}
                     </label>
                     <Select
-                        options={careerList}
+                        options={filteredCareers()}
                         placeholder="OK, just one more career then... last one!"
                         onChange={(option) => {
                             handleCareer(option, 2);
@@ -206,6 +222,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(2, 1);
                         }}
+                        disabled={!thirdCareer.careerTiers[0]}
                     />
                     <label htmlFor="career-3-2">
                         {getCareerTierName(2, 1)}
@@ -216,6 +233,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(2, 2);
                         }}
+                        disabled={!thirdCareer.careerTiers[1]}
                     />
                     <label htmlFor="career-3-3">
                         {getCareerTierName(2, 2)}
@@ -226,6 +244,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(2, 3);
                         }}
+                        disabled={!thirdCareer.careerTiers[2]}
                     />
                     <label htmlFor="career-3-4">
                         {getCareerTierName(2, 3)}
