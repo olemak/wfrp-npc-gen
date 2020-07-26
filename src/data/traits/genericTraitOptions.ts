@@ -10,7 +10,6 @@ export type genericTraitName =
     | "cunning"
     | "elite"
     | "fast"
-    | "hardy"
     | "hatred"
     | "leader"
     | "prejudice"
@@ -80,7 +79,6 @@ export const genericTraitOptions: IgenericTrait[] = [
             ["Ag", 10],
         ],
     },
-    { value: "hardy", label: "Hardy (+T wounds)" },
     { value: "hatred", label: "Hatred" },
     {
         value: "leader",

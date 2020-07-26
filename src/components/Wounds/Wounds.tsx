@@ -4,20 +4,45 @@ import { Istats } from "../../data/species";
 import { effectTalentNameType } from "../Talent/Talents";
 import { Size } from "../Size/SizeEnum";
 import { Text } from "../../context";
+import { calculateWounds } from "./../../logic/calculateWounds";
 
 interface IWounds {
-    stats?: Istats;
+    statsBase: Istats;
+    statsRandom: Istats;
+    statsAdvances: Istats;
     talents: effectTalentNameType[];
     size: Size;
 }
 
-export const Wounds = ({ stats, talents }: IWounds) => {
+export const Wounds = ({
+    statsBase,
+    statsRandom,
+    statsAdvances,
+    talents,
+    size,
+}: IWounds) => {
     const text = React.useContext(Text);
-    let wounds: number;
 
-    wounds = 10;
+    const isHardy: boolean = talents.includes("Hardy");
+    const Toughness: number = Math.floor(
+        (statsBase["T"] + statsRandom["T"] + statsAdvances["T"]) / 10
+    );
+    const WillPower: number = Math.floor(
+        (statsBase["WP"] + statsRandom["WP"] + statsAdvances["WP"]) / 10
+    );
+    const Strength: number = Math.floor(
+        (statsBase["S"] + statsRandom["S"] + statsAdvances["S"]) / 10
+    );
+
+    let wounds: number = calculateWounds(size, Toughness, WillPower, Strength);
+
+    console.log(talents, isHardy);
+
+    wounds += isHardy ? Toughness * Toughness : 0;
 
     return (
-        <span className="character__wounds">{`${wounds} ${text.npc.wounds}`}</span>
+        <span className="wounds">
+            {text.npc.wounds}:<span className="wounds__value">{wounds}</span>
+        </span>
     );
 };

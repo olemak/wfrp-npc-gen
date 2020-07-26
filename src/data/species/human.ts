@@ -20,8 +20,6 @@ export const human: ISpecies = {
         Fel: 30,
     },
     size: Size.AVERAGE,
-    minSize: Size.LITTLE,
-    maxSize: Size.ENORMOUS,
     fixed: ["prejudice", "weapon"],
     optional: ["disease", "ranged", "spellcaster"],
 };

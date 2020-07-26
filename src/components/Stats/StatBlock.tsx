@@ -59,6 +59,8 @@ export const StatBlock = ({
                 return ["S", 5];
             case "Warrior Born":
                 return ["WS", 5];
+            case "Hardy":
+                return null;
             default:
                 break;
         }
@@ -76,8 +78,10 @@ export const StatBlock = ({
         const effects = traitEffects.concat(talentEffectsOnStats);
 
         for (let effect of effects) {
-            const stat: statName = effect[0];
-            newModifiers[stat] += effect[1];
+            if (effect) {
+                const stat: statName = effect[0];
+                newModifiers[stat] += effect[1];
+            }
         }
 
         return newModifiers;

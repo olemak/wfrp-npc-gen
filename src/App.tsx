@@ -108,6 +108,9 @@ class App extends React.Component<{}, Icharacter> {
                         <Wounds
                             talents={this.state.effectTalents}
                             size={this.state.size}
+                            statsBase={this.state.statsBase}
+                            statsRandom={this.state.statsRandom}
+                            statsAdvances={this.state.statsAdvances}
                         />
                     </section>
 

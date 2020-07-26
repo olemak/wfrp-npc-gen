@@ -6,5 +6,5 @@ main {
 
 .character__details {
     display: flex;
-    align-content: space-between;
+    align-items: center;
 }
