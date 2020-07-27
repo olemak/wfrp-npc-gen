@@ -58,7 +58,7 @@ export type skillName =
     | "track"
     | "trade";
 
-interface Iskill {
+export interface Iskill {
     value: skillName;
     label: string;
     stat: statName;

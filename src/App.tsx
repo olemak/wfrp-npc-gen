@@ -132,7 +132,12 @@ class App extends React.Component<{}, Icharacter> {
                     >
                         Careers
                     </CareerSelector>
-                    <Skills />
+                    <Skills
+                        careerSet={this.state.careerSet}
+                        statsBase={this.state.statsBase}
+                        statsRandom={this.state.statsRandom}
+                        statsAdvances={this.state.statsAdvances}
+                    />
                     <Talents
                         careerSet={this.state.careerSet}
                         handleChange={this.setEffectTalents}

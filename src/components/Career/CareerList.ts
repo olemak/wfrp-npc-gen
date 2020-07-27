@@ -4,7 +4,7 @@ import { miner } from "./careers/miner";
 import { mystic } from "./careers/mystic";
 import { talentName } from "../Talent/Talent";
 
-type skillTuple = [skillName, string];
+export type skillTuple = [skillName, string];
 
 type talentTuple = [talentName, string];
 type careerTalents = talentName | talentTuple;

@@ -99,21 +99,6 @@ export const StatBlock = ({
                 });
             }
         }
-
-        /*
-        const cleanTraitNames = traits.map((trait: any) => {
-            if (typeof trait === "string") {
-                return trait;
-            } else {
-                return trait[0].replace(/\(([^)]+)\)/, `(${trait[1]})`);
-            }
-        });
-
-        return Array.from(new Set(cleanTraitNames.sort()));
-        */
-
-        console.log({ allAdvanceEffects });
-
         return allAdvanceEffects;
     };
 

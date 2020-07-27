@@ -1,4 +1,4 @@
-.character__talents ul {
+.items ul {
     height: 220px;
     display: flex;
     flex-direction: column;
@@ -6,7 +6,7 @@
     padding: 0;
 }
 
-.character__talents li {
+.items li {
     width: 25%;
     display: inline-flex;
 }
