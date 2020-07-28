@@ -70,14 +70,17 @@ export const Skills = ({
 
         return (
             <li key={`skill--${skill.value}`}>
-                {skill.label} {skill.stat} {statValue} + {skill.advances} :{" "}
+                <span>{skill.label}</span>
+                <em>
+                    {skill.stat} {statValue} + {skill.advances}
+                </em>
                 <strong>{skillStat}</strong>
             </li>
         );
     };
 
     return (
-        <section className="items">
+        <section className="skill items">
             <h3>Skills</h3>
             <ul>{characterSkills && characterSkills.map(skillItemPartial)}</ul>
         </section>

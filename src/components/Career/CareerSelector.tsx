@@ -102,6 +102,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(0, 0);
                         }}
+                        checked={careerSet[0].careerTiers[0]}
                     />
                     <label htmlFor="career-1-1">
                         {getCareerTierName(0, 0)}
@@ -157,6 +158,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(1, 0);
                         }}
+                        checked={careerSet[1].careerTiers[0]}
                     />
                     <label htmlFor="career-2-1">
                         {getCareerTierName(1, 0)}
@@ -212,6 +214,7 @@ export const CareerSelector = ({
                         onChange={() => {
                             handleTiers(2, 0);
                         }}
+                        checked={careerSet[2].careerTiers[0]}
                     />
                     <label htmlFor="career-3-1">
                         {getCareerTierName(2, 0)}

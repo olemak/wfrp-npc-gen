@@ -1,12 +1,18 @@
 .items ul {
-    height: 220px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     padding: 0;
 }
-
 .items li {
-    width: 25%;
     display: inline-flex;
+}
+
+@media (min-width: 500px) {
+    .items ul {
+        height: 220px;
+        flex-wrap: wrap;
+    }
+    .items li {
+        width: 25%;
+    }
 }

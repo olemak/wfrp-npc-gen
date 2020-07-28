@@ -1,3 +1,24 @@
-.character__wounds {
-    color: red;
+.skill li {
+    justify-items: flex-end;
+    justify-content: flex-end;
+}
+
+.skill li span {
+    margin-right: auto;
+}
+
+.skill li em {
+    padding: 0 1em;
+    display: none;
+}
+
+@media (min-width: 800px) {
+    .skill li em {
+        display: inline;
+    }
+}
+
+.skill li strong {
+    align-self: flex-end;
+    padding-right: 1em;
 }

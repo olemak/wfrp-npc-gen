@@ -62,15 +62,15 @@ export const defaultCharacter: Icharacter = {
     careerSet: [
         {
             careerId: null,
-            careerTiers: [false, false, false, false],
+            careerTiers: [true, false, false, false],
         },
         {
             careerId: null,
-            careerTiers: [false, false, false, false],
+            careerTiers: [true, false, false, false],
         },
         {
             careerId: null,
-            careerTiers: [false, false, false, false],
+            careerTiers: [true, false, false, false],
         },
     ],
     effectTalents: [],
