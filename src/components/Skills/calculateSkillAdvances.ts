@@ -34,13 +34,27 @@ const findSkillData = (career: any) => {
     }
 };
 
+function sortSkills(a: any, b: any) {
+    const skillA = a.label.toUpperCase(); // ignore upper and lowercase
+    const skillB = b.label.toUpperCase(); // ignore upper and lowercase
+    if (skillA < skillB) {
+        return -1;
+    }
+    if (skillA > skillB) {
+        return 1;
+    }
+
+    // names must be equal
+    return 0;
+}
+
 export const calculateSkillAdvances = ({
     rawCareerAdvances,
 }: IcalculateSkillAdvances) => {
     let calculatedSkills: IactiveSkill[] = rawCareerAdvances.map(findSkillData);
 
     if (rawCareerAdvances.some((advance) => advance.maxTier)) {
-        return calculatedSkills.flat();
+        return calculatedSkills.flat().sort(sortSkills);
     }
     return null;
 };
