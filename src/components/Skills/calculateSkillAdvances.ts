@@ -15,8 +15,6 @@ interface IskillName {
 
 const findSkillData = (career: any) => {
     if (career?.advances.length) {
-        console.log("---------------");
-
         // eslint-disable-next-line array-callback-return
         return career.advances.map((advance: any) => {
             let skillData: Iskill | undefined = skillList.find((skill) => {
@@ -24,13 +22,9 @@ const findSkillData = (career: any) => {
             });
 
             if (typeof advance === "object") {
-                console.log(skillData, advance);
-                //     if (!skillData?.label.endsWith(`(${advance[1]})`)) {
-                //    console.log(skillData, advance);
                 skillData = Object.assign({}, skillData, {
                     label: `${skillData?.label} (${advance[1]})`,
                 });
-                //    }
             }
 
             return Object.assign({}, skillData, {

@@ -10,7 +10,7 @@
 
 @media (min-width: 500px) {
     .items ul {
-        height: 220px;
+        height: 230px;
         flex-wrap: wrap;
     }
     .items li {

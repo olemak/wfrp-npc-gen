@@ -93,7 +93,7 @@ export const Talents = ({
             if (typeof trait === "string") {
                 return trait;
             } else {
-                return trait[0].replace(/\(([^)]+)\)/, `(${trait[1]})`);
+                return `${trait[0]} (${trait[1]})`;
             }
         });
 

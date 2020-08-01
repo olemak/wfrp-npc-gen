@@ -41,6 +41,15 @@ export const Skills = ({
         );
         return calculateSkillAdvances({ rawCareerAdvances });
     }, [careerSet, selectedCareerIds]);
+
+    let careerCount = 1;
+    if (careerSet[1].careerId) {
+        careerCount++;
+    }
+    if (careerSet[2].careerId) {
+        careerCount++;
+    }
+
     /* 
         get character career skills:
          - need careerSet
@@ -57,28 +66,31 @@ export const Skills = ({
     */
 
     const skillItemPartial = (skill: IactiveSkill, i: number) => {
-        const statName = skill.stat;
+        console.info(skill);
+        if (skill) {
+            const statName = skill.stat;
 
-        const statValue =
-            statsBase[statName] +
-            statsRandom[statName] +
-            statsAdvances[statName];
+            const statValue =
+                statsBase[statName] +
+                statsRandom[statName] +
+                statsAdvances[statName];
 
-        const skillStat = statValue + skill.advances;
+            const skillStat = statValue + skill.advances;
 
-        return (
-            <li key={`skill--${i}`}>
-                <span>{skill.label}</span>
-                <em>
-                    {skill.stat} {statValue} + {skill.advances}
-                </em>
-                <strong>{skillStat}</strong>
-            </li>
-        );
+            return (
+                <li key={`skill--${i}`}>
+                    <span>{skill.label}</span>
+                    <em>
+                        {skill.stat} {statValue} + {skill.advances}
+                    </em>
+                    <strong>{skillStat}</strong>
+                </li>
+            );
+        }
     };
 
     return (
-        <section className="skill items">
+        <section className={`skill items career-count--${careerCount}`}>
             <h3>Skills</h3>
             <ul>{characterSkills && characterSkills.map(skillItemPartial)}</ul>
         </section>

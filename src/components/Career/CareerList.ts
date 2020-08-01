@@ -3,6 +3,7 @@ import { skillName } from "../Skills/SkillList";
 import { miner } from "./careers/miner";
 import { mystic } from "./careers/mystic";
 import { talentName } from "../Talent/Talent";
+import { apothecary } from "./careers/apothecary";
 
 export type skillTuple = [skillName, string];
 
@@ -79,4 +80,4 @@ export const nullCareer: Icareer = {
 
 const none = Object.assign(nullCareer, { label: "None" });
 
-export const careerList = [none, miner, mystic];
+export const careerList = [none, miner, mystic, apothecary];

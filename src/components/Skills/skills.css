@@ -8,7 +8,7 @@
 }
 
 .skill li em {
-    padding: 0 1em;
+    padding: 0 0.6em;
     display: none;
 }
 
@@ -17,7 +17,20 @@
         width: 33%;
     }
     .skill li em {
-        display: inline;
+        display: inline-block;
+        width: 6em;
+        align-self: flex-end;
+        text-align: right;
+    }
+
+    .skill.items {
+        margin-right: -2em;
+    }
+    .skill.items.career-count--2 ul {
+        height: 312px;
+    }
+    .skill.items.career-count--3 ul {
+        height: 470px;
     }
 }
 

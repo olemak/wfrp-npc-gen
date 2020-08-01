@@ -1,7 +1,7 @@
 import { Icareer } from "./../CareerList";
 export const mystic: Icareer = {
     value: "mystic",
-    label: "Mystic - Fortune Teller, Mystic, Sage, Seer",
+    label: "Mystic (Fortune Teller, Sage, Seer)",
     tier: [
         {
             label: "Fortune Teller",
@@ -68,7 +68,7 @@ export const mystic: Icareer = {
             ],
             advances: ["Int"],
             talents: [
-                ["Arcane Magic (Lore)", "Celestial"],
+                ["Arcane Magic", "Celestial"],
                 "Magical Sense",
                 "Menacing",
                 "Strong-minded",
