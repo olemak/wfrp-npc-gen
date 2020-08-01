@@ -13,6 +13,9 @@
 }
 
 @media (min-width: 800px) {
+    .skill.items li {
+        width: 33%;
+    }
     .skill li em {
         display: inline;
     }

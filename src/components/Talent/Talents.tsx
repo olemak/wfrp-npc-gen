@@ -127,7 +127,7 @@ export const Talents = ({
 
     if (activeTalents.length > 0) {
         return (
-            <section className="items">
+            <section className="talent items">
                 <h3>Talents</h3>
                 <ul>{activeTalents.map(TalentPartial)}</ul>
             </section>

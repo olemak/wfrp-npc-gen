@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     padding: 0;
+    align-content: flex-start;
 }
 .items li {
     display: inline-flex;
@@ -13,6 +14,6 @@
         flex-wrap: wrap;
     }
     .items li {
-        width: 33%;
+        width: 20%;
     }
 }
