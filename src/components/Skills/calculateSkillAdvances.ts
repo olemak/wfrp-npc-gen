@@ -9,16 +9,32 @@ export interface IactiveSkill extends Iskill {
     advances: number;
 }
 
+interface IskillName {
+    label?: string;
+}
+
 const findSkillData = (career: any) => {
     if (career?.advances.length) {
+        console.log("---------------");
+
         // eslint-disable-next-line array-callback-return
         return career.advances.map((advance: any) => {
-            const skillData: Iskill | undefined = skillList.find((skill) => {
+            let skillData: Iskill | undefined = skillList.find((skill) => {
                 return skill.value === advance || skill.value === advance[0];
             });
 
+            if (typeof advance === "object") {
+                console.log(skillData, advance);
+                //     if (!skillData?.label.endsWith(`(${advance[1]})`)) {
+                //    console.log(skillData, advance);
+                skillData = Object.assign({}, skillData, {
+                    label: `${skillData?.label} (${advance[1]})`,
+                });
+                //    }
+            }
+
             return Object.assign({}, skillData, {
-                advances: 5 * career.maxTier,
+                advances: 6 * career.maxTier,
             });
         });
     }

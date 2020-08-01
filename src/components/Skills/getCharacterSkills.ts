@@ -33,10 +33,21 @@ export const getCharacterSkills = (
                 }
             })
             .flat()
-            .filter((x) => x);
+            .filter((x) => x)
+            //         .filter(onlyUnique)
+            .sort();
     }
+
+    //   console.log(firstCareer);
+
+    //   const uniqueFirst = new Set(firstCareer);
 
     const rawCareerAdvances = [firstCareer];
 
     return rawCareerAdvances;
 };
+/*
+function onlyUnique(value: any, index: number, self: any) {
+    return self.indexOf(value) === index;
+}
+*/

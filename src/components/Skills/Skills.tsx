@@ -56,9 +56,7 @@ export const Skills = ({
          Show Skill label (and specialization,if relevant), base state, base stat value, and SUM of those
     */
 
-    const skillItemPartial = (skill: IactiveSkill) => {
-        console.log(skill, statsBase, statsRandom, statsAdvances);
-
+    const skillItemPartial = (skill: IactiveSkill, i: number) => {
         const statName = skill.stat;
 
         const statValue =
@@ -69,7 +67,7 @@ export const Skills = ({
         const skillStat = statValue + skill.advances;
 
         return (
-            <li key={`skill--${skill.value}`}>
+            <li key={`skill--${i}`}>
                 <span>{skill.label}</span>
                 <em>
                     {skill.stat} {statValue} + {skill.advances}
