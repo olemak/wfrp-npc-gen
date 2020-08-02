@@ -41,48 +41,86 @@ export const Skills = ({
         );
         return calculateSkillAdvances({ rawCareerAdvances });
     }, [careerSet, selectedCareerIds]);
-    /* 
-        get character career skills:
-         - need careerSet
-         - need corresponding careerTiers
-         
-         THEN: map to skill list and compose list
-         - need skillList 
-         - figure out the skill advances
-         
-         Sort it
-         Group it (COMBAT, SOCIAL, KNOWLEDGE (Lore or Trade), MAGIC, OTHER)
-         List it
-         Show Skill label (and specialization,if relevant), base state, base stat value, and SUM of those
-    */
 
-    const skillItemPartial = (skill: IactiveSkill) => {
-        console.log(skill, statsBase, statsRandom, statsAdvances);
+    let careerCount = 1;
+    if (careerSet[1].careerId) {
+        careerCount++;
+    }
+    if (careerSet[2].careerId) {
+        careerCount++;
+    }
 
-        const statName = skill.stat;
+    const combatSkills = characterSkills?.filter(filterCombatSkills);
+    const generalSkills = characterSkills?.filter(filterGeneralSkills);
 
-        const statValue =
-            statsBase[statName] +
-            statsRandom[statName] +
-            statsAdvances[statName];
+    const skillItemPartial = (skill: IactiveSkill, i: number) => {
+        if (skill) {
+            const statName = skill.stat;
 
-        const skillStat = statValue + skill.advances;
+            const statValue =
+                statsBase[statName] +
+                statsRandom[statName] +
+                statsAdvances[statName];
 
-        return (
-            <li key={`skill--${skill.value}`}>
-                <span>{skill.label}</span>
-                <em>
-                    {skill.stat} {statValue} + {skill.advances}
-                </em>
-                <strong>{skillStat}</strong>
-            </li>
-        );
+            const skillStat = statValue + skill.advances;
+
+            return (
+                <li key={`skill--${i}`}>
+                    <span>{skill.label}</span>
+                    <em>
+                        {skill.stat} {statValue} + {skill.advances}
+                    </em>
+                    <strong>{skillStat}</strong>
+                </li>
+            );
+        }
     };
 
-    return (
-        <section className="skill items">
-            <h3>Skills</h3>
-            <ul>{characterSkills && characterSkills.map(skillItemPartial)}</ul>
-        </section>
-    );
+    if (characterSkills) {
+        return (
+            <section className={`skill items career-count--${careerCount}`}>
+                <ul>
+                    <li className="combat-skill">
+                        <h4>Combat skills</h4>
+                    </li>
+                    {combatSkills && combatSkills.map(skillItemPartial)}
+                    <li className="other-skill">
+                        <h4>Other skills</h4>
+                    </li>
+                    {generalSkills && generalSkills.map(skillItemPartial)}
+                </ul>
+            </section>
+        );
+    }
+
+    return null;
 };
+
+function filterCombatSkills(skill: IactiveSkill | null) {
+    if (skill) {
+        if (
+            skill.value === "dodge" ||
+            skill.value === "melee" ||
+            skill.value === "ranged" ||
+            skill.value === "intimidate" ||
+            skill.value === "cool"
+        ) {
+            return true;
+        }
+    }
+    return false;
+}
+function filterGeneralSkills(skill: IactiveSkill | null) {
+    if (skill) {
+        if (
+            skill.value !== "dodge" &&
+            skill.value !== "melee" &&
+            skill.value !== "ranged" &&
+            skill.value !== "intimidate" &&
+            skill.value !== "cool"
+        ) {
+            return true;
+        }
+    }
+    return false;
+}
