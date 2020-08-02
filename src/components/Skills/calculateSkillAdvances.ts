@@ -43,9 +43,33 @@ function sortSkills(a: any, b: any) {
     if (skillA > skillB) {
         return 1;
     }
-
-    // names must be equal
     return 0;
+}
+
+function uniqueAndHighest(
+    newSkillList: IactiveSkill[],
+    currentSkill: IactiveSkill,
+    index: number,
+    skillArr: IactiveSkill[]
+) {
+    let doPush = true;
+    if (currentSkill && index > 1) {
+        const [prevSkill] = newSkillList.slice(-1);
+
+        if (prevSkill && prevSkill.label === currentSkill.label) {
+            console.log(prevSkill, currentSkill);
+            if (prevSkill.advances <= currentSkill.advances) {
+                newSkillList.pop();
+            }
+            if (prevSkill.advances > currentSkill.advances) {
+                doPush = false;
+            }
+        }
+    }
+    if (doPush) {
+        newSkillList.push(currentSkill);
+    }
+    return newSkillList;
 }
 
 export const calculateSkillAdvances = ({
@@ -54,7 +78,10 @@ export const calculateSkillAdvances = ({
     let calculatedSkills: IactiveSkill[] = rawCareerAdvances.map(findSkillData);
 
     if (rawCareerAdvances.some((advance) => advance.maxTier)) {
-        return calculatedSkills.flat().sort(sortSkills);
+        return calculatedSkills
+            .flat()
+            .sort(sortSkills)
+            .reduce(uniqueAndHighest, []);
     }
     return null;
 };

@@ -76,8 +76,6 @@ export const getCharacterSkills = (
             .sort();
     }
 
-    console.log(firstCareer, secondCareer, thirdCareer);
-
     const rawCareerAdvances = [firstCareer, secondCareer, thirdCareer];
 
     return rawCareerAdvances;

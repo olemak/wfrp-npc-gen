@@ -66,7 +66,6 @@ export const Skills = ({
     */
 
     const skillItemPartial = (skill: IactiveSkill, i: number) => {
-        console.info(skill);
         if (skill) {
             const statName = skill.stat;
 
