@@ -24,11 +24,13 @@ import { Wounds } from "./components/Wounds/Wounds";
 import { Skills } from "./components/Skills/Skills";
 import { Talents } from "./components/Talent/Talents";
 import { Name } from "./components/Name/Name";
+import { Controls } from "./components/Controls/Controls";
 
 class App extends React.Component<{}, Icharacter> {
     constructor(props: Icharacter) {
         super(props);
         this.state = defaultCharacter;
+        this.toggleView = this.toggleView.bind(this);
         this.setName = this.setName.bind(this);
         this.setSpecies = this.setSpecies.bind(this);
         this.setTraitsSpecies = this.setTraitsSpecies.bind(this);
@@ -38,6 +40,10 @@ class App extends React.Component<{}, Icharacter> {
         this.setCareers = this.setCareers.bind(this);
         this.setEffectTalents = this.setEffectTalents.bind(this);
         this.setStatsAdvances = this.setStatsAdvances.bind(this);
+    }
+
+    toggleView(editView: boolean) {
+        this.setState({ editView });
     }
 
     setName(name: string) {
@@ -85,14 +91,27 @@ class App extends React.Component<{}, Icharacter> {
     render() {
         return (
             <Text.Provider value={text}>
-                <main>
-                    <Name value={this.state.name} handleChange={this.setName} />
+                <main
+                    className={`${
+                        this.state.editView ? "edit-view" : "print-view"
+                    }`}
+                >
+                    <Controls
+                        editView={this.state.editView}
+                        toggleView={this.toggleView}
+                    />
+                    <Name
+                        value={this.state.name}
+                        handleChange={this.setName}
+                        editView={this.state.editView}
+                    />
                     <SpeciesSelector
                         value={{
                             value: this.state.value,
                             label: this.state.label,
                         }}
                         handleChange={this.setSpecies}
+                        editView={this.state.editView}
                     />
                     <StatBlock
                         species={this.state.label}
@@ -105,6 +124,7 @@ class App extends React.Component<{}, Icharacter> {
                         careerSet={this.state.careerSet}
                         handleChange={this.setStatRandomModifiers}
                         effectTalents={this.state.effectTalents}
+                        editView={this.state.editView}
                     />
                     <section className="character__details">
                         <SizeSelector
@@ -112,6 +132,7 @@ class App extends React.Component<{}, Icharacter> {
                             sizeValue={this.state.size}
                             handleChange={this.setSize}
                             key={this.state.value}
+                            editView={this.state.editView}
                         />
                         <Wounds
                             talents={this.state.effectTalents}
@@ -129,9 +150,22 @@ class App extends React.Component<{}, Icharacter> {
                         }}
                         handleChange={this.setTraitsSpecies}
                     />
-                    <TraitSelectorGeneric
-                        handleChange={this.setTraitsGeneric}
-                    />
+                    {this.state.editView ? (
+                        <TraitSelectorGeneric
+                            handleChange={this.setTraitsGeneric}
+                            editView={this.state.editView}
+                        />
+                    ) : this.state.generic.length ? (
+                        <div>
+                            <strong>Generic traits: </strong>
+                            {this.state.generic.map((t) => (
+                                <em>{`${t.label} `}</em>
+                            ))}
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                    ) : null}
 
                     <CareerSelector
                         handleChange={this.setCareers}

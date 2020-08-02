@@ -17,6 +17,7 @@ interface IStatBlock {
     handleChange: (statModifiers: Istats) => void;
     handleAdvance: (statModifiers: Istats) => void;
     effectTalents: effectTalentNameType[];
+    editView: boolean;
 }
 
 export const StatBlock = ({
@@ -29,6 +30,7 @@ export const StatBlock = ({
     handleChange,
     handleAdvance,
     effectTalents,
+    editView,
 }: IStatBlock) => {
     const [showRows, setShowRows] = React.useState(true);
     const [statsEffected, setStatsEffected] = React.useState(nullStats);
@@ -161,12 +163,58 @@ export const StatBlock = ({
         handleChange(newStatMods);
     };
 
+    if (editView) {
+        return (
+            <section
+                className={`stat-block stat-block--${
+                    showRows ? "expanded" : "collapsed"
+                }`}
+            >
+                {keys.map((key) => (
+                    <div
+                        className={`stat-block__values ${
+                            showRows ? "expanded" : "collapsed"
+                        }`}
+                        key={`stat-key--${key}`}
+                    >
+                        <strong>{key}</strong>
+                        <span>{statsBase[key]}</span>
+                        <span>{statsRandom[key]}</span>
+                        <span>{listAffectedStat(key)}</span>
+
+                        <strong className="stat-block__sums">
+                            {calculateStats(key)}
+                        </strong>
+                    </div>
+                ))}
+
+                <div className="stat-block__controls">
+                    <strong
+                        onClick={toggle}
+                        className={showRows ? "collapse" : "expand"}
+                    >
+                        {showRows ? (
+                            <span>Collapse &#8679;</span>
+                        ) : (
+                            <span> &#8681;</span>
+                        )}
+                    </strong>
+                    <span>&#8678; Base Stats</span>
+                    <span
+                        className="stat-block__randomize"
+                        onClick={randomizeStatModifiers}
+                    >
+                        Randomize
+                    </span>
+                    <span>&#8678; Advances</span>
+                    <span>&#8678; Sum</span>
+                </div>
+            </section>
+        );
+    }
+
     return (
-        <section
-            className={`stat-block stat-block--${
-                showRows ? "expanded" : "collapsed"
-            }`}
-        >
+        <section className="stat-block stat-block--collapsed">
             {keys.map((key) => (
                 <div
                     className={`stat-block__values ${
@@ -175,37 +223,9 @@ export const StatBlock = ({
                     key={`stat-key--${key}`}
                 >
                     <strong>{key}</strong>
-                    <span>{statsBase[key]}</span>
-                    <span>{statsRandom[key]}</span>
-                    <span>{listAffectedStat(key)}</span>
-
-                    <strong className="stat-block__sums">
-                        {calculateStats(key)}
-                    </strong>
+                    <span>{calculateStats(key)}</span>
                 </div>
             ))}
-
-            <div className="stat-block__controls">
-                <strong
-                    onClick={toggle}
-                    className={showRows ? "collapse" : "expand"}
-                >
-                    {showRows ? (
-                        <span>Collapse &#8679;</span>
-                    ) : (
-                        <span> &#8681;</span>
-                    )}
-                </strong>
-                <span>&#8678; Base Stats</span>
-                <span
-                    className="stat-block__randomize"
-                    onClick={randomizeStatModifiers}
-                >
-                    Randomize
-                </span>
-                <span>&#8678; Advances</span>
-                <span>&#8678; Sum</span>
-            </div>
         </section>
     );
 };

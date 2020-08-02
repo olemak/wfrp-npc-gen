@@ -20,6 +20,7 @@ export interface Icharacter {
     statsAdvances: Istats;
     careerSet: selectedCareersType;
     effectTalents: effectTalentNameType[];
+    editView: boolean;
 }
 
 export const nullStats: Istats = {
@@ -74,4 +75,5 @@ export const defaultCharacter: Icharacter = {
         },
     ],
     effectTalents: [],
+    editView: true,
 };

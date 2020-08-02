@@ -9,11 +9,13 @@ interface ISizeSelectorProps {
     speciesId: speciesName;
     handleChange: (newSize: Size) => void;
     sizeValue: Size;
+    editView: boolean;
 }
 
 export const SizeSelector = ({
     speciesId,
     handleChange,
+    editView,
 }: ISizeSelectorProps) => {
     const text = React.useContext(Text);
 
@@ -32,23 +34,33 @@ export const SizeSelector = ({
         handleChange(speciesSize);
     }, [handleChange, speciesSize]);
 
+    if (editView) {
+        return (
+            <section className="size">
+                <strong
+                    style={{ display: "inline-block", minWidth: "136px" }}
+                >{`Size: ${text.npc.sizeStrings[sizeState]} `}</strong>
+                {minSize && maxSize && (
+                    <input
+                        type="range"
+                        min={minSize}
+                        max={maxSize}
+                        step={1}
+                        value={sizeState}
+                        onChange={handleSizeChange}
+                    />
+                )}
+                <br />
+                <br />
+            </section>
+        );
+    }
+
     return (
         <section className="size">
             <strong
                 style={{ display: "inline-block", minWidth: "136px" }}
             >{`Size: ${text.npc.sizeStrings[sizeState]} `}</strong>
-            {minSize && maxSize && (
-                <input
-                    type="range"
-                    min={minSize}
-                    max={maxSize}
-                    step={1}
-                    value={sizeState}
-                    onChange={handleSizeChange}
-                />
-            )}
-            <br />
-            <br />
         </section>
     );
 };
