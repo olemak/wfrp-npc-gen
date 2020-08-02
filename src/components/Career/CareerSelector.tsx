@@ -89,7 +89,7 @@ export const CareerSelector = ({
         <section className="career-selection">
             <Select
                 options={filteredCareers()}
-                placeholder="You could add a career if you like!"
+                placeholder="You may add a career, too!"
                 onChange={(option) => {
                     handleCareer(option, 0);
                 }}
@@ -142,7 +142,7 @@ export const CareerSelector = ({
                     </label>
                     <Select
                         options={filteredCareers()}
-                        placeholder="Add another career, if you must."
+                        placeholder="Add another career, if you like."
                         onChange={(option) => {
                             handleCareer(option, 1);
                         }}
@@ -198,7 +198,7 @@ export const CareerSelector = ({
                     </label>
                     <Select
                         options={filteredCareers()}
-                        placeholder="OK, just one more career then... last one!"
+                        placeholder="Add yet another career? (last one)"
                         onChange={(option) => {
                             handleCareer(option, 2);
                         }}
