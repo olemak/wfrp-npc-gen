@@ -37,7 +37,7 @@ export const nullStats: Istats = {
 };
 
 export const defaultCharacter: Icharacter = {
-    name: "New Character",
+    name: "New Character Name",
     value: "human",
     label: "Human",
     size: Size.AVERAGE,
