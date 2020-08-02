@@ -91,7 +91,11 @@ class App extends React.Component<{}, Icharacter> {
     render() {
         return (
             <Text.Provider value={text}>
-                <main>
+                <main
+                    className={`${
+                        this.state.editView ? "edit-view" : "print-view"
+                    }`}
+                >
                     <Controls
                         editView={this.state.editView}
                         toggleView={this.toggleView}
@@ -107,6 +111,7 @@ class App extends React.Component<{}, Icharacter> {
                             label: this.state.label,
                         }}
                         handleChange={this.setSpecies}
+                        editView={this.state.editView}
                     />
                     <StatBlock
                         species={this.state.label}
@@ -119,6 +124,7 @@ class App extends React.Component<{}, Icharacter> {
                         careerSet={this.state.careerSet}
                         handleChange={this.setStatRandomModifiers}
                         effectTalents={this.state.effectTalents}
+                        editView={this.state.editView}
                     />
                     <section className="character__details">
                         <SizeSelector
@@ -126,6 +132,7 @@ class App extends React.Component<{}, Icharacter> {
                             sizeValue={this.state.size}
                             handleChange={this.setSize}
                             key={this.state.value}
+                            editView={this.state.editView}
                         />
                         <Wounds
                             talents={this.state.effectTalents}
@@ -143,9 +150,22 @@ class App extends React.Component<{}, Icharacter> {
                         }}
                         handleChange={this.setTraitsSpecies}
                     />
-                    <TraitSelectorGeneric
-                        handleChange={this.setTraitsGeneric}
-                    />
+                    {this.state.editView ? (
+                        <TraitSelectorGeneric
+                            handleChange={this.setTraitsGeneric}
+                            editView={this.state.editView}
+                        />
+                    ) : this.state.generic.length ? (
+                        <div>
+                            <strong>Generic traits: </strong>
+                            {this.state.generic.map((t) => (
+                                <em>{`${t.label} `}</em>
+                            ))}
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                    ) : null}
 
                     <CareerSelector
                         handleChange={this.setCareers}

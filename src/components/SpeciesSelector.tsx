@@ -12,11 +12,13 @@ export interface ISpeciesSelectorOption {
 interface ISpeciesSelectorProps {
     handleChange: (species: ISpeciesSelectorOption, action: any) => void;
     value: ISpeciesSelectorOption;
+    editView: boolean;
 }
 
 export const SpeciesSelector = ({
     handleChange,
     value,
+    editView,
 }: ISpeciesSelectorProps) => {
     const text = React.useContext(Text);
 
@@ -24,12 +26,16 @@ export const SpeciesSelector = ({
         handleChange(value, action);
     };
 
-    return (
-        <Select
-            options={species}
-            value={value}
-            onChange={setSpecies}
-            placeholder={text.npc.selectSpecies}
-        />
-    );
+    if (editView) {
+        return (
+            <Select
+                options={species}
+                value={value}
+                onChange={setSpecies}
+                placeholder={text.npc.selectSpecies}
+            />
+        );
+    }
+
+    return <h4>{value.label}</h4>;
 };

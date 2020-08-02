@@ -14,5 +14,6 @@ export const Default = () => (
     <SpeciesSelector
         value={{ value: "human", label: "Human" }}
         handleChange={mockSetSpecies}
+        editView={true}
     />
 );
