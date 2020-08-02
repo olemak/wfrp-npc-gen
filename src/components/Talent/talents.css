@@ -8,6 +8,14 @@
     display: inline-flex;
 }
 
+.items.talent h3 {
+    margin-bottom: 0;
+}
+
+.items.talent ul {
+    margin-top: 0;
+}
+
 @media (min-width: 500px) {
     .items ul {
         height: 230px;

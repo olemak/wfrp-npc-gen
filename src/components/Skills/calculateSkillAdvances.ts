@@ -57,7 +57,6 @@ function uniqueAndHighest(
         const [prevSkill] = newSkillList.slice(-1);
 
         if (prevSkill && prevSkill.label === currentSkill.label) {
-            console.log(prevSkill, currentSkill);
             if (prevSkill.advances <= currentSkill.advances) {
                 newSkillList.pop();
             }

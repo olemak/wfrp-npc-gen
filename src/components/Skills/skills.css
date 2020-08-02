@@ -1,6 +1,22 @@
+.skill ul {
+    margin-top: 2em;
+}
 .skill li {
     justify-items: flex-end;
     justify-content: flex-end;
+}
+
+.skill li h4 {
+    text-align: left;
+    margin: 0;
+    width: 100%;
+}
+
+.skill li.combat-skill {
+    margin-top: -22px;
+}
+.skill li.other-skill {
+    margin-top: 22px;
 }
 
 .skill li span {
@@ -27,10 +43,10 @@
         margin-right: -2em;
     }
     .skill.items.career-count--2 ul {
-        height: 312px;
+        height: 270px;
     }
     .skill.items.career-count--3 ul {
-        height: 470px;
+        height: 360px;
     }
 }
 
