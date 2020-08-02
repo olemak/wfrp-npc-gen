@@ -18,8 +18,15 @@ export const getCharacterSkills = (
     const firstCareerData = careers.find(
         (career) => career.value === careerSet[0].careerId
     );
-    //    let secondCareer:any = null;
-    //    let thirdCareer:any = null;
+
+    let secondCareer: careerSkillAdvances = { maxTier: 0, advances: [] };
+    const secondCareerData = careers.find(
+        (career) => career.value === careerSet[1].careerId
+    );
+    let thirdCareer: careerSkillAdvances = { maxTier: 0, advances: [] };
+    const thirdCareerData = careers.find(
+        (career) => career.value === careerSet[2].careerId
+    );
 
     if (careerSet[0].careerId && firstCareerData) {
         firstCareer.maxTier = careerSet[0].careerTiers.filter(
@@ -33,10 +40,48 @@ export const getCharacterSkills = (
                 }
             })
             .flat()
-            .filter((x) => x);
+            .filter((x) => x)
+            .sort();
     }
 
-    const rawCareerAdvances = [firstCareer];
+    if (careerSet[1].careerId && secondCareerData) {
+        secondCareer.maxTier = careerSet[1].careerTiers.filter(
+            (tier) => tier
+        ).length;
+        secondCareer.advances = secondCareerData.tier
+            // eslint-disable-next-line array-callback-return
+            .map((tier: any, i: number) => {
+                if (i < secondCareer.maxTier) {
+                    return tier.skills;
+                }
+            })
+            .flat()
+            .filter((x: any) => x)
+            .sort();
+    }
+
+    if (careerSet[2].careerId && thirdCareerData) {
+        thirdCareer.maxTier = careerSet[2].careerTiers.filter(
+            (tier) => tier
+        ).length;
+        thirdCareer.advances = thirdCareerData.tier
+            // eslint-disable-next-line array-callback-return
+            .map((tier: any, i: number) => {
+                if (i < thirdCareer.maxTier) {
+                    return tier.skills;
+                }
+            })
+            .flat()
+            .filter((x: any) => x)
+            .sort();
+    }
+
+    const rawCareerAdvances = [firstCareer, secondCareer, thirdCareer];
 
     return rawCareerAdvances;
 };
+/*
+function onlyUnique(value: any, index: number, self: any) {
+    return self.indexOf(value) === index;
+}
+*/

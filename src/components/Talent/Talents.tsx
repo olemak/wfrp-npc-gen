@@ -93,7 +93,7 @@ export const Talents = ({
             if (typeof trait === "string") {
                 return trait;
             } else {
-                return trait[0].replace(/\(([^)]+)\)/, `(${trait[1]})`);
+                return `${trait[0]} (${trait[1]})`;
             }
         });
 
@@ -127,7 +127,7 @@ export const Talents = ({
 
     if (activeTalents.length > 0) {
         return (
-            <section className="items">
+            <section className="talent items">
                 <h3>Talents</h3>
                 <ul>{activeTalents.map(TalentPartial)}</ul>
             </section>

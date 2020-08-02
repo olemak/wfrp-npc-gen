@@ -1,7 +1,7 @@
 import { Icareer } from "./../CareerList";
 export const miner: Icareer = {
     value: "miner",
-    label: "Miner - Prospector, Miner, Master Miner, Mine Foreman",
+    label: "Miner (Prospector)",
     tier: [
         {
             label: "Prospector",
@@ -17,12 +17,7 @@ export const miner: Icareer = {
                 "swim",
             ],
             advances: ["S", "T", "WP"],
-            talents: [
-                "Rover",
-                ["Strider (Terrain)", "Rocky"],
-                "Sturdy",
-                "Tenacious",
-            ],
+            talents: ["Rover", ["Strider", "Rocky"], "Sturdy", "Tenacious"],
             trappings: ["Charcoal Stick", "Crude Map", "Pan", "Spade"],
         },
         {
@@ -62,7 +57,7 @@ export const miner: Icareer = {
             advances: ["I"],
             talents: [
                 "Careful Strike",
-                ["Craftsman (Trade)", "Explosives"],
+                ["Craftsman", "Explosives"],
                 "Tinker",
                 "Tunnel Rat",
             ],

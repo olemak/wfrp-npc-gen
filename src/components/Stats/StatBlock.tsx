@@ -122,7 +122,11 @@ export const StatBlock = ({
         for (let effect of allEffects) {
             if (effect) {
                 const stat: statName = effect[0];
-                newModifiers[stat] += effect[1];
+                if (newModifiers[stat] < 20) {
+                    newModifiers[stat] += effect[1];
+                } else {
+                    newModifiers[stat] += 1;
+                }
             }
         }
 
