@@ -24,11 +24,13 @@ import { Wounds } from "./components/Wounds/Wounds";
 import { Skills } from "./components/Skills/Skills";
 import { Talents } from "./components/Talent/Talents";
 import { Name } from "./components/Name/Name";
+import { Controls } from "./components/Controls/Controls";
 
 class App extends React.Component<{}, Icharacter> {
     constructor(props: Icharacter) {
         super(props);
         this.state = defaultCharacter;
+        this.toggleView = this.toggleView.bind(this);
         this.setName = this.setName.bind(this);
         this.setSpecies = this.setSpecies.bind(this);
         this.setTraitsSpecies = this.setTraitsSpecies.bind(this);
@@ -38,6 +40,10 @@ class App extends React.Component<{}, Icharacter> {
         this.setCareers = this.setCareers.bind(this);
         this.setEffectTalents = this.setEffectTalents.bind(this);
         this.setStatsAdvances = this.setStatsAdvances.bind(this);
+    }
+
+    toggleView(editView: boolean) {
+        this.setState({ editView });
     }
 
     setName(name: string) {
@@ -86,7 +92,15 @@ class App extends React.Component<{}, Icharacter> {
         return (
             <Text.Provider value={text}>
                 <main>
-                    <Name value={this.state.name} handleChange={this.setName} />
+                    <Controls
+                        editView={this.state.editView}
+                        toggleView={this.toggleView}
+                    />
+                    <Name
+                        value={this.state.name}
+                        handleChange={this.setName}
+                        editView={this.state.editView}
+                    />
                     <SpeciesSelector
                         value={{
                             value: this.state.value,
